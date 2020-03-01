@@ -1,0 +1,11 @@
+/.idea/
+/docs/
+/src/
+/components/
+/pages/
+/test/
+/store/
+/static/
+/middleware/
+/layouts/
+/assets/
