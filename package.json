@@ -1,10 +1,10 @@
 {
   "name": "nuxt-ui",
-  "version": "0.5.0",
+  "version": "0.0.2",
   "description": "Vue components styled with TailwindCss with configurable classes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alfonsobries/nuxt-ui"
+    "url": "git+https://github.com/516310460/NuxtUI"
   },
   "keywords": [
     "tailwindcss",
@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "build-spabundle": "vue-cli-service build --target lib --name nuxt-ui index.js",
+    "build-bundle": "vue-cli-service build --target lib --name nuxt-ui index.js",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest"
@@ -34,6 +34,7 @@
     "vue2-datepicker": "^3.3.1"
   },
   "devDependencies": {
+    "@vue/cli-service": "^3.11.0",
     "@nuxtjs/tailwindcss": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-jest": "^24.1.0",
