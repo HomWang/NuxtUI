@@ -1,7 +1,7 @@
 {
   "name": "nuxt-ui",
-  "version": "0.0.2",
-  "description": "Vue components styled with TailwindCss with configurable classes",
+  "version": "0.0.3",
+  "description": "Nuxt UI components with configurable classes ready for TailwindCSS",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/516310460/NuxtUI"
