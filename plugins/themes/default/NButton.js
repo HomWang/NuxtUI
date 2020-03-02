@@ -1,4 +1,4 @@
-const TButton = {
+const NButton = {
   baseClass: 'border block rounded inline-flex items-center justify-center focus:outline-none',
   defaultClass: 'bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500',
   primaryClass: 'text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600',
@@ -19,4 +19,4 @@ const TButton = {
   // smallSizeClass: 'px-4 py-2 text-sm',
 }
 
-export default TButton
+export default NButton

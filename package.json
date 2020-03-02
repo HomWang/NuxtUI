@@ -27,6 +27,9 @@
     "generate": "nuxt generate",
     "test": "jest"
   },
+  "directories": {
+    "doc": "docs"
+  },
   "dependencies": {
     "body-scroll-lock": "^2.6.4",
     "nuxt": "^2.0.0",
@@ -34,8 +37,8 @@
     "vue2-datepicker": "^3.3.1"
   },
   "devDependencies": {
-    "@vue/cli-service": "^3.11.0",
     "@nuxtjs/tailwindcss": "^1.0.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
