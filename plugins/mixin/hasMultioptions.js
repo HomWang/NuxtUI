@@ -1,6 +1,8 @@
 import flatten from 'lodash/flatten'
 import get from 'lodash/get'
 
+// Has multioptions
+// 多选项
 const hasMultioptions = {
   props: {
     valueAttribute: {
@@ -17,7 +19,7 @@ const hasMultioptions = {
     },
   },
   computed: {
-    normalizedOptions () {
+    normalizedOptions() {
       if (Array.isArray(this.options)) {
         return this.options.map(option => this.normalizeOption(option))
       } else {
@@ -28,12 +30,12 @@ const hasMultioptions = {
       }
     },
 
-    flattenedOptions () {
+    flattenedOptions() {
       return flatten(this.normalizedOptions.map(option => {
         if (option.children) {
           return option.children
         }
-        
+
         return option
       }))
     },
@@ -41,17 +43,17 @@ const hasMultioptions = {
   methods: {
     guessOptionValue(option) {
       if (this.valueAttribute) {
-        return get(option, this.valueAttribute) 
+        return get(option, this.valueAttribute)
       }
       return get(option, 'value', get(option, 'id', get(option, 'text')))
     },
     guessOptionText(option) {
       if (this.textAttribute) {
-        return get(option, this.textAttribute) 
+        return get(option, this.textAttribute)
       }
       return get(option, 'text', get(option, 'label'))
     },
-    normalizeOption (option) {
+    normalizeOption(option) {
       if (['string', 'number', 'boolean'].includes(typeof option)) {
         return {
           value: option,

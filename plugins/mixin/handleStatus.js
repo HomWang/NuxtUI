@@ -1,3 +1,5 @@
+// Handle status
+// 处理状态
 const handleStatus = {
   props: {
     status: {
@@ -9,19 +11,19 @@ const handleStatus = {
     },
   },
   computed: {
-    noStatus () {
+    noStatus() {
       return this.status === null
     },
-    isSuccess () {
+    isSuccess() {
       return this.status === true || this.status === 'success'
     },
-    isError () {
+    isError() {
       return this.status === false || this.status === 'error'
     },
-    isWarning () {
+    isWarning() {
       return this.status === 'warning'
     },
-    statusName () {
+    statusName() {
       if (this.isError) {
         return 'error'
       }

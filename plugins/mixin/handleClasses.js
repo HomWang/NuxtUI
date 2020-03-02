@@ -1,6 +1,8 @@
 import handleStatus from './handleStatus.js'
 import handleSize from './handleSize.js'
 
+// Handle classes
+// 处理类
 const handleClasses = {
   mixins: [handleStatus, handleSize],
 

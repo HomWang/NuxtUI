@@ -14,8 +14,7 @@ export default {
 
   data() {
     return {
-      comId: 1,
-      comName: 'Jack'
+      HomWangName: 'WangHong'
     }
   },
   // components: {

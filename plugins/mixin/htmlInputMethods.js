@@ -1,21 +1,23 @@
+// Html input methods
+// html input的方法
 const htmlInputMethods = {
   methods: {
-    blur () {
+    blur() {
       this.$el.blur()
     },
-    click () {
+    click() {
       this.$el.click()
     },
-    focus () {
+    focus() {
       this.$el.focus()
     },
-    select () {
+    select() {
       this.$el.select()
     },
-    setSelectionRange () {
+    setSelectionRange() {
       this.$el.setSelectionRange()
     },
-    setRangeText () {
+    setRangeText() {
       this.$el.setRangeText()
     }
   }

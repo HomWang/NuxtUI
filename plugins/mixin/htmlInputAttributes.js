@@ -1,3 +1,5 @@
+// Html input attributes
+// html input的属性
 const htmlInputAttributes = {
   props: {
     autocomplete: {

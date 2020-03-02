@@ -1,31 +1,32 @@
 <script>
-// import selfInstall from "../utils/selfInstall.js";
-// import commonAttributes from "../mixins/commonAttributes.js";
-import TButtonTheme from "../plugins/themes/default/TButton";
+import NButtonTheme from "../plugins/themes/default/NButton";
 
 const {
   baseClass,
   defaultClass,
   primaryClass,
-  secondaryClass,
-  tertiaryClass,
+  // secondaryClass,
+  // tertiaryClass,
   successClass,
   dangerClass,
   warningClass,
   disabledClass,
   defaultSizeClass,
-  largeSizeClass,
-  smallSizeClass
-} = TButtonTheme;
+  // largeSizeClass,
+  // smallSizeClass,
+  xsSizeClass,
+  smSizeClass,
+  baseSizeClass,
+  lgSizeClass,
+  xlSizeClass
+} = NButtonTheme;
 
 export default {
-  name: "TButton",
+  name: "NButton",
 
   install(Vue, theme) {
     selfInstall(Vue, theme, this);
   },
-
-  // mixins: [commonAttributes],
 
   props: {
     tagName: {
@@ -68,7 +69,10 @@ export default {
       type: String,
       default: null,
       validator: function(value) {
-        return value === null || ["lg", "sm"].indexOf(value) !== -1;
+        return (
+          value === null ||
+          ["xs", "sm", "base", "lg", "xl"].indexOf(value) !== -1
+        );
       }
     },
     method: {
@@ -123,14 +127,14 @@ export default {
       type: [String, Object, Array],
       default: primaryClass
     },
-    secondaryClass: {
-      type: [String, Object, Array],
-      default: secondaryClass
-    },
-    tertiaryClass: {
-      type: [String, Object, Array],
-      default: tertiaryClass
-    },
+    // secondaryClass: {
+    //   type: [String, Object, Array],
+    //   default: secondaryClass
+    // },
+    // tertiaryClass: {
+    //   type: [String, Object, Array],
+    //   default: tertiaryClass
+    // },
     successClass: {
       type: [String, Object, Array],
       default: successClass
@@ -151,20 +155,40 @@ export default {
       type: [String, Object, Array],
       default: defaultSizeClass
     },
-    largeSizeClass: {
+    xsSizeClass: {
       type: [String, Object, Array],
-      default: largeSizeClass
+      default: xsSizeClass
     },
-    smallSizeClass: {
+    smSizeClass: {
       type: [String, Object, Array],
-      default: smallSizeClass
+      default: smSizeClass
+    },
+    baseSizeClass: {
+      type: [String, Object, Array],
+      default: baseSizeClass
+    },
+    lgSizeClass: {
+      type: [String, Object, Array],
+      default: lgSizeClass
+    },
+    xlSizeClass: {
+      type: [String, Object, Array],
+      default: xlSizeClass
     }
+    // largeSizeClass: {
+    //   type: [String, Object, Array],
+    //   default: largeSizeClass
+    // },
+    // smallSizeClass: {
+    //   type: [String, Object, Array],
+    //   default: smallSizeClass
+    // }
   },
 
   computed: {
     /**
      * The default classes for the button
-     *
+     * 按钮的默认类
      * @return {Array}
      */
     currentClass() {
@@ -179,24 +203,47 @@ export default {
         classes.push(this.disabledClass);
       }
 
-      if (this.size === null) {
-        classes.push(this.defaultSizeClass);
-      } else if (this.size === "sm") {
-        classes.push(this.smallSizeClass);
-      } else if (this.size === "lg") {
-        classes.push(this.largeSizeClass);
+      // if (this.size === null) {
+      //   classes.push(this.defaultSizeClass);
+      // } else if (this.size === "sm") {
+      //   classes.push(this.smallSizeClass);
+      // } else if (this.size === "lg") {
+      //   classes.push(this.largeSizeClass);
+      // }
+      switch (this.size) {
+        case "xs":
+          classes.push(this.xsSizeClass);
+          break;
+        case "sm":
+          classes.push(this.smSizeClass);
+          break;
+        case "base":
+          classes.push(this.baseSizeClass);
+          break;
+        case "lg":
+          classes.push(this.lgSizeClass);
+          break;
+        case "lg":
+          classes.push(this.lgSizeClass);
+          break;
+        case "xl":
+          classes.push(this.xlSizeClass);
+          break;
+        default:
+          classes.push(this.defaultSizeClass);
+          break;
       }
 
       switch (this.variant) {
         case "primary":
           classes.push(this.primaryClass);
           break;
-        case "secondary":
-          classes.push(this.secondaryClass);
-          break;
-        case "tertiary":
-          classes.push(this.tertiaryClass);
-          break;
+        // case "secondary":
+        //   classes.push(this.secondaryClass);
+        //   break;
+        // case "tertiary":
+        //   classes.push(this.tertiaryClass);
+        //   break;
         case "danger":
           classes.push(this.dangerClass);
           break;
@@ -227,7 +274,8 @@ export default {
     /**
      * If we have the `to` defined and the routerLink or Nuxt link component is available we can
      * use the create a router link
-     *
+     * 如果定义了"to"，并且routerLink或Nuxt link组件可用，则可以
+     * 使用创建路由器链接
      * @return {Boolean}
      */
     isARouterLink() {
@@ -237,7 +285,7 @@ export default {
     /**
      * If we have the `href` defined and the InertiaLink component is available we can
      * use to create an interia link
-     *
+     * 如果我们定义了"href"并且InertiaLink组件可用，我们可以用于创建interia链接
      * @return {Boolean}
      */
     isAnIntertiaLink() {
@@ -246,6 +294,7 @@ export default {
 
     /**
      * The component to render according to the props
+     * 根据道具渲染的组件
      * @return {String}
      */
     componentToRender() {
@@ -291,6 +340,7 @@ export default {
 
     /**
      * Attrs according to the button type
+     * 按钮类型
      * @return {Object}
      */
     getAttributes() {

@@ -34,6 +34,7 @@ export default {
    ** Global CSS
    */
   css: [
+    "~assets/css/main.css",
     "tailwindcss/dist/base.css",
     "tailwindcss/dist/components.css",
     "tailwindcss/dist/utilities.css",

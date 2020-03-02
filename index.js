@@ -1,22 +1,22 @@
 import merge from "lodash/merge";
 import DefaultTheme from "./plugins/themes/default.js";
 
-import TInput from "./components/TInput";
-import TTextarea from "./components/TTextarea";
-import TSelect from "./components/TSelect";
-import TButton from "./components/TButton";
-import TRadio from "./components/TRadio";
-import TRadioGroup from "./components/TRadioGroup";
-import TCheckbox from "./components/TCheckbox";
-import TCheckboxGroup from "./components/TCheckboxGroup";
-import TAlert from "./components/TAlert";
-import TCard from "./components/TCard";
-import TTable from "./components/TTable";
-import TModal from "./components/TModal";
-import TPagination from "./components/TPagination";
-import TDropdown from "./components/TDropdown";
-import TInputGroup from "./components/TInputGroup";
-import TDatepicker from "./components/TDatepicker";
+// import TInput from "./components/TInput";
+// import TTextarea from "./components/TTextarea";
+// import TSelect from "./components/TSelect";
+import NButton from "./components/NButton";
+// import TRadio from "./components/TRadio";
+// import TRadioGroup from "./components/TRadioGroup";
+// import TCheckbox from "./components/TCheckbox";
+// import TCheckboxGroup from "./components/TCheckboxGroup";
+// import TAlert from "./components/TAlert";
+// import TCard from "./components/TCard";
+// import TTable from "./components/TTable";
+// import TModal from "./components/TModal";
+// import TPagination from "./components/TPagination";
+// import TDropdown from "./components/TDropdown";
+// import TInputGroup from "./components/TInputGroup";
+// import TDatepicker from "./components/TDatepicker";
 
 // import TInput from "./elements/TInput.vue";
 // import TTextarea from "./elements/TTextarea.vue";
@@ -37,22 +37,22 @@ import TDatepicker from "./components/TDatepicker";
 // import TDatepicker from "./components/TDatepicker.vue";
 
 const components = {
-  TInput,
-  TTextarea,
-  TSelect,
-  TButton,
-  TRadio,
-  TRadioGroup,
-  TCheckbox,
-  TCheckboxGroup,
-  TDropdown,
-  TInputGroup,
-  TCard,
-  TTable,
-  TModal,
-  TPagination,
-  TAlert,
-  TDatepicker
+  // TInput,
+  // TTextarea,
+  // TSelect,
+  NButton,
+  // TRadio,
+  // TRadioGroup,
+  // TCheckbox,
+  // TCheckboxGroup,
+  // TDropdown,
+  // TInputGroup,
+  // TCard,
+  // TTable,
+  // TModal,
+  // TPagination,
+  // TAlert,
+  // TDatepicker
 };
 
 /**
@@ -65,7 +65,9 @@ function extendComponent(Vue, CurrentTheme, componentName) {
 
   const newSettings = merge(themeDefaultSettings, themeSettings);
 
-  let { props } = components[componentName];
+  let {
+    props
+  } = components[componentName];
 
   Object.keys(newSettings).forEach(key => {
     const prop = {

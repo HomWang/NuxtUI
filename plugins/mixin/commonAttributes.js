@@ -1,3 +1,5 @@
+// Common attributes
+// 共同属性
 const commonAttributes = {
   props: {
     id: {

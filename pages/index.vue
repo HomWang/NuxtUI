@@ -1,54 +1,150 @@
 <template>
   <div class="container">
-    <div>
+    <div class="mb-20">
       <logo />
       <h1 class="title">
-        wanghongui-demo
+        Nuxt-ui demo
       </h1>
-      <h2 class="subtitle">
-        My majestic Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <!-- <n-button class="mt-10" variant="primary">Primary button</n-button> -->
+      <!-- <n-button variant="secondary">Secondary button</n-button> -->
+      <div class="mt-10">
+        <div class="text-center">
+          <p>默认按钮组</p>
+          <p>Default buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" size="xs">button text</n-button>
+          <n-button class="ml-10" size="sm">button text</n-button>
+          <n-button class="ml-10" size="base">button text</n-button>
+          <n-button class="ml-10" size="lg">button text</n-button>
+          <n-button class="ml-10" size="xl">button text</n-button>
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>主要按钮组</p>
+          <p>Primary buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" variant="primary" size="xs"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="primary" size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="primary" size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="primary" size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="primary" size="xl"
+            >button text</n-button
+          >
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>成功按钮组</p>
+          <p>Success buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" variant="success" size="xs"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="success" size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="success" size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="success" size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="success" size="xl"
+            >button text</n-button
+          >
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>警告按钮组</p>
+          <p>Warning buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" variant="warning" size="xs"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" size="xl"
+            >button text</n-button
+          >
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>危险按钮组</p>
+          <p>Danger buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" variant="danger" size="xs"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" size="xl"
+            >button text</n-button
+          >
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>禁用按钮组</p>
+          <p>Disabled buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button class="ml-10" disabled size="xs">button text</n-button>
+          <n-button class="ml-10" variant="primary" disabled size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="success" disabled size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" disabled size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" disabled size="xl"
+            >button text</n-button
+          >
+        </div>
       </div>
     </div>
-    <t-input
-      :id="text.id"
-      v-model="text.value"
-      :disabled="text.disabled"
-      :name="text.name"
-    />
-
-    <p>{{ text.value }}</p>
-
-    <ul>
-      <li>
-        <label for="text-disabled">
-          <input id="text-disabled" v-model="text.disabled" type="checkbox" />
-          Disabled
-        </label>
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
-import TInput from "~/components/TInput";
+import NButton from "~/components/NButton";
 import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
     Logo,
-    TInput
+    NButton
   },
   data() {
     return {
