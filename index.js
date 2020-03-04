@@ -5,6 +5,7 @@ import DefaultTheme from "./plugins/themes/default.js";
 // import TTextarea from "./components/TTextarea";
 // import TSelect from "./components/TSelect";
 import NButton from "./components/NButton";
+import NIcon from "./components/NIcon";
 // import TRadio from "./components/TRadio";
 // import TRadioGroup from "./components/TRadioGroup";
 // import TCheckbox from "./components/TCheckbox";
@@ -41,6 +42,7 @@ const components = {
   // TTextarea,
   // TSelect,
   NButton,
+  NIcon,
   // TRadio,
   // TRadioGroup,
   // TCheckbox,

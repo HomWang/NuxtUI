@@ -3,17 +3,17 @@ import NButtonTheme from "../plugins/themes/default/NButton";
 
 const {
   baseClass,
+  loadingClass,
+  iconClass,
   defaultClass,
   primaryClass,
-  // secondaryClass,
-  // tertiaryClass,
+  secondaryClass,
+  tertiaryClass,
   successClass,
   dangerClass,
   warningClass,
   disabledClass,
   defaultSizeClass,
-  // largeSizeClass,
-  // smallSizeClass,
   xsSizeClass,
   smSizeClass,
   baseSizeClass,
@@ -24,7 +24,7 @@ const {
 export default {
   name: "NButton",
 
-  install(Vue, theme) {
+  install (Vue, theme) {
     selfInstall(Vue, theme, this);
   },
 
@@ -32,7 +32,7 @@ export default {
     tagName: {
       type: String,
       default: "button",
-      validator: function(value) {
+      validator: function (value) {
         return ["button", "a"].indexOf(value) !== -1;
       }
     },
@@ -51,7 +51,7 @@ export default {
     variant: {
       type: String,
       default: null,
-      validator: function(value) {
+      validator: function (value) {
         return (
           value === null ||
           [
@@ -68,12 +68,28 @@ export default {
     size: {
       type: String,
       default: null,
-      validator: function(value) {
+      validator: function (value) {
         return (
           value === null ||
           ["xs", "sm", "base", "lg", "xl"].indexOf(value) !== -1
         );
       }
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    loadingClass: {
+      type: [String, Object, Array],
+      default: loadingClass,
+    },
+    icon: {
+      type: String,
+      default: ""
+    },
+    iconType: {
+      type: String,
+      default: "after"
     },
     method: {
       type: String,
@@ -119,6 +135,10 @@ export default {
       type: [String, Object, Array],
       default: baseClass
     },
+    iconClass: {
+      type: [String, Object, Array],
+      default: iconClass
+    },
     defaultClass: {
       type: [String, Object, Array],
       default: defaultClass
@@ -127,14 +147,14 @@ export default {
       type: [String, Object, Array],
       default: primaryClass
     },
-    // secondaryClass: {
-    //   type: [String, Object, Array],
-    //   default: secondaryClass
-    // },
-    // tertiaryClass: {
-    //   type: [String, Object, Array],
-    //   default: tertiaryClass
-    // },
+    secondaryClass: {
+      type: [String, Object, Array],
+      default: secondaryClass
+    },
+    tertiaryClass: {
+      type: [String, Object, Array],
+      default: tertiaryClass
+    },
     successClass: {
       type: [String, Object, Array],
       default: successClass
@@ -175,14 +195,6 @@ export default {
       type: [String, Object, Array],
       default: xlSizeClass
     }
-    // largeSizeClass: {
-    //   type: [String, Object, Array],
-    //   default: largeSizeClass
-    // },
-    // smallSizeClass: {
-    //   type: [String, Object, Array],
-    //   default: smallSizeClass
-    // }
   },
 
   computed: {
@@ -191,7 +203,7 @@ export default {
      * 按钮的默认类
      * @return {Array}
      */
-    currentClass() {
+    currentClass () {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
@@ -203,13 +215,10 @@ export default {
         classes.push(this.disabledClass);
       }
 
-      // if (this.size === null) {
-      //   classes.push(this.defaultSizeClass);
-      // } else if (this.size === "sm") {
-      //   classes.push(this.smallSizeClass);
-      // } else if (this.size === "lg") {
-      //   classes.push(this.largeSizeClass);
+      // if (this.loading) {
+      //   classes.push(this.loadingClass);
       // }
+
       switch (this.size) {
         case "xs":
           classes.push(this.xsSizeClass);
@@ -238,12 +247,12 @@ export default {
         case "primary":
           classes.push(this.primaryClass);
           break;
-        // case "secondary":
-        //   classes.push(this.secondaryClass);
-        //   break;
-        // case "tertiary":
-        //   classes.push(this.tertiaryClass);
-        //   break;
+        case "secondary":
+          classes.push(this.secondaryClass);
+          break;
+        case "tertiary":
+          classes.push(this.tertiaryClass);
+          break;
         case "danger":
           classes.push(this.dangerClass);
           break;
@@ -261,11 +270,11 @@ export default {
       return classes;
     },
 
-    isInertiaLinkComponentAvailable() {
+    isInertiaLinkComponentAvailable () {
       return !!this.$options.components.InertiaLink;
     },
 
-    isRouterLinkComponentAvailable() {
+    isRouterLinkComponentAvailable () {
       return !!(
         this.$options.components.RouterLink || this.$options.components.NuxtLink
       );
@@ -278,7 +287,7 @@ export default {
      * 使用创建路由器链接
      * @return {Boolean}
      */
-    isARouterLink() {
+    isARouterLink () {
       return this.to !== undefined && this.isRouterLinkComponentAvailable;
     },
 
@@ -288,7 +297,7 @@ export default {
      * 如果我们定义了"href"并且InertiaLink组件可用，我们可以用于创建interia链接
      * @return {Boolean}
      */
-    isAnIntertiaLink() {
+    isAnIntertiaLink () {
       return this.href !== undefined && this.isInertiaLinkComponentAvailable;
     },
 
@@ -297,7 +306,7 @@ export default {
      * 根据道具渲染的组件
      * @return {String}
      */
-    componentToRender() {
+    componentToRender () {
       if (this.isARouterLink) {
         return (
           this.$options.components.NuxtLink ||
@@ -314,27 +323,28 @@ export default {
       }
 
       return this.tagName;
-    }
+    },
+
   },
 
   methods: {
-    onBlur(e) {
+    onBlur (e) {
       this.$emit("blur", e);
     },
 
-    onFocus(e) {
+    onFocus (e) {
       this.$emit("focus", e);
     },
 
-    onClick(e) {
+    onClick (e) {
       this.$emit("click", e);
     },
 
-    blur() {
+    blur () {
       this.$el.blur();
     },
 
-    focus() {
+    focus () {
       this.$el.focus();
     },
 
@@ -343,7 +353,7 @@ export default {
      * 按钮类型
      * @return {Object}
      */
-    getAttributes() {
+    getAttributes () {
       if (this.isAnIntertiaLink) {
         return {
           href: this.href,
@@ -356,6 +366,8 @@ export default {
           autofocus: this.autofocus,
           disabled: this.disabled,
           name: this.name,
+          icon: this.icon,
+          iconType: this.iconType,
           type: this.type
         };
       }
@@ -374,6 +386,8 @@ export default {
           autofocus: this.autofocus,
           disabled: this.disabled,
           name: this.name,
+          icon: this.icon,
+          iconType: this.iconType,
           type: this.type
         };
       }
@@ -385,12 +399,14 @@ export default {
         disabled: this.disabled,
         name: this.name,
         href: this.href,
+        icon: this.icon,
+        iconType: this.iconType,
         type: this.type
       };
     }
   },
 
-  render: function(createElement) {
+  render: function (createElement) {
     return createElement(
       this.componentToRender,
       {
@@ -402,7 +418,20 @@ export default {
           blur: this.onBlur
         }
       },
-      this.$slots.default
+      this.icon
+        ? [
+          this.iconType === "after" ? this.$slots.default : "",
+          createElement("i", {
+            attrs: {
+
+              class: `${this.iconClass} ${this.icon} ${
+                this.iconType === "after" ? "ml-1" : "mr-1"
+                } ${this.loading ? this.loadingClass : ''}`
+            }
+          }),
+          this.iconType === "before" ? this.$slots.default : ""
+        ]
+        : this.$slots.default
     );
   }
 };

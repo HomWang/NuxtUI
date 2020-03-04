@@ -16,13 +16,16 @@
 // ...
 
 import NButton from './default/NButton'
+import NIcon from './default/NIcon'
 
 const DefaultTheme = {
-  NButton
+  NButton,
+  NIcon
 }
 
 export {
-  NButton
+  NButton,
+  NIcon
 }
 
 export default DefaultTheme

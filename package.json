@@ -1,6 +1,6 @@
 {
   "name": "nuxt-ui",
-  "version": "0.0.3",
+  "version": "0.0.8",
   "description": "Nuxt UI components with configurable classes ready for TailwindCSS",
   "repository": {
     "type": "git",
@@ -18,11 +18,12 @@
   "author": "HomWang",
   "license": "MIT",
   "main": "dist/nuxt-ui.common.js",
+  "style": "dist/nuxt-ui.css",
   "private": false,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "build-bundle": "vue-cli-service build --target lib --name nuxt-ui index.js",
+    "build-bundle": "vue-cli-service build --target lib --name nuxt-ui index.js && gulp build --gulpfile gulpfile.js",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest"
@@ -32,6 +33,10 @@
   },
   "dependencies": {
     "body-scroll-lock": "^2.6.4",
+    "cp-cli": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.2.0",
     "nuxt": "^2.0.0",
     "vue-popperjs": "^2.1.0",
     "vue2-datepicker": "^3.3.1"

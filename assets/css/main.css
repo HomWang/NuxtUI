@@ -1,1 +1,14 @@
+/* 旋转360 */
+.animation-rotate-360 {
+  animation: rotating 1.2s linear infinite
+}
 
+@keyframes rotating {
+  from {
+    transform: rotate(0)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}

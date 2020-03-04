@@ -1,115 +1,46 @@
 <template>
   <div class="container">
     <div class="mb-20">
-      <logo />
-      <h1 class="title">
-        Nuxt-ui demo
-      </h1>
-      <!-- <n-button class="mt-10" variant="primary">Primary button</n-button> -->
-      <!-- <n-button variant="secondary">Secondary button</n-button> -->
       <div class="mt-10">
         <div class="text-center">
-          <p>默认按钮组</p>
-          <p>Default buttons</p>
+          <p>基本按钮组</p>
+          <p>basic buttons</p>
         </div>
         <div class="mt-2">
-          <n-button class="ml-10" size="xs">button text</n-button>
-          <n-button class="ml-10" size="sm">button text</n-button>
-          <n-button class="ml-10" size="base">button text</n-button>
-          <n-button class="ml-10" size="lg">button text</n-button>
-          <n-button class="ml-10" size="xl">button text</n-button>
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>主要按钮组</p>
-          <p>Primary buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" variant="primary" size="xs"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="primary" size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="primary" size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="primary" size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="primary" size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>成功按钮组</p>
-          <p>Success buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" variant="success" size="xs"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="success" size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="success" size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="success" size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="success" size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>警告按钮组</p>
-          <p>Warning buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" variant="warning" size="xs"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>危险按钮组</p>
-          <p>Danger buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" variant="danger" size="xs"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" size="xl"
-            >button text</n-button
-          >
+          <n-button
+            class="ml-10"
+            size="xs"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="primary"
+            size="sm"
+          >button text</n-button>
+          <n-button
+            class="ml-2"
+            variant="secondary"
+            size="sm"
+          >次要按钮</n-button>
+          <n-button
+            class="ml-2"
+            variant="tertiary"
+            size="sm"
+          >第三按钮</n-button>
+          <n-button
+            class="ml-10"
+            variant="success"
+            size="base"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="warning"
+            size="lg"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="danger"
+            size="xl"
+          >button text</n-button>
         </div>
       </div>
       <div class="mt-10">
@@ -118,20 +49,112 @@
           <p>Disabled buttons</p>
         </div>
         <div class="mt-2">
-          <n-button class="ml-10" disabled size="xs">button text</n-button>
-          <n-button class="ml-10" variant="primary" disabled size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="success" disabled size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" disabled size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" disabled size="xl"
-            >button text</n-button
-          >
+          <n-button
+            class="ml-10"
+            disabled
+            size="xs"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="primary"
+            disabled
+            size="sm"
+          >button text</n-button>
+          <n-button
+            class="ml-2"
+            variant="secondary"
+            disabled
+            size="sm"
+          >次要按钮</n-button>
+          <n-button
+            class="ml-2"
+            variant="tertiary"
+            disabled
+            size="sm"
+          >第三按钮</n-button>
+          <n-button
+            class="ml-10"
+            variant="success"
+            disabled
+            size="base"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="warning"
+            disabled
+            size="lg"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            variant="danger"
+            disabled
+            size="xl"
+          >button text</n-button>
         </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>图标按钮组</p>
+          <p>Disabled buttons</p>
+        </div>
+        <div class="mt-2">
+          <n-button
+            icon="icon-iconjiazai"
+            iconType="before"
+            class="ml-10"
+            disabled
+            size="xs"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            icon="icon-coinCity_heading_ite"
+            variant="primary"
+            size="sm"
+          >button text</n-button>
+          <n-button
+            class="ml-2"
+            icon="icon-otc_body_icon_sele"
+            variant="secondary"
+            size="sm"
+          >次要按钮</n-button>
+          <n-button
+            class="ml-2"
+            icon="icon-coinCity_location"
+            iconType="before"
+            variant="tertiary"
+            size="sm"
+          >第三按钮</n-button>
+          <n-button
+            class="ml-10"
+            icon="icon-otc_body_icon_sele"
+            variant="success"
+            size="base"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            icon="icon-Exchange_trading_switch"
+            variant="warning"
+            size="lg"
+          >button text</n-button>
+          <n-button
+            class="ml-10"
+            :loading="true"
+            icon="iconsuanli_icon_kline"
+            iconType="before"
+            variant="danger"
+            size="xl"
+          >button text</n-button>
+        </div>
+      </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>图标</p>
+        </div>
+        <n-icon
+          class="iconjiazaizhong"
+          :loading="true"
+          size="xl"
+        ></n-icon>
       </div>
     </div>
   </div>
@@ -139,14 +162,16 @@
 
 <script>
 import NButton from "~/components/NButton";
+import NIcon from "~/components/NIcon";
 import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
     Logo,
-    NButton
+    NButton,
+    NIcon
   },
-  data() {
+  data () {
     return {
       text: {
         value: null,
@@ -156,7 +181,7 @@ export default {
       }
     };
   },
-  mounted() {
+  mounted () {
     console.log(this.comId);
   }
 };
@@ -178,8 +203,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

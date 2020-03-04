@@ -1,56 +1,55 @@
 export default {
-  mode: 'spa',
+  mode: "spa",
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: process.env.npm_package_name || "",
     meta: [{
-        charset: 'utf-8'
+        charset: "utf-8"
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
       },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
     link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/favicon.ico"
     }]
   },
   /*
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: "#fff"
   },
   /*
    ** Global CSS
    */
   css: [
+    "~assets/fonts/iconfont.css",
     "~assets/css/main.css",
-    "tailwindcss/dist/base.css",
-    "tailwindcss/dist/components.css",
-    "tailwindcss/dist/utilities.css",
+    // "tailwindcss/dist/base.css",
+    // "tailwindcss/dist/components.css",
+    // "tailwindcss/dist/utilities.css"
   ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    '~plugins/mixin',
-  ],
+  plugins: ["~plugins/mixin"],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss',
+    "@nuxtjs/tailwindcss"
   ],
   /*
    ** Nuxt.js modules
@@ -65,4 +64,4 @@ export default {
      */
     extend(config, ctx) {}
   }
-}
+};
