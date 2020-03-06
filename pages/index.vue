@@ -64,7 +64,6 @@
       <div class="m-auto" style="width: 400px">
         成功：
         <n-input
-          class="m-auto"
           status="success"
           v-model="inputValue"
           @change="onChange"
@@ -74,9 +73,9 @@
       <div class="m-auto" style="width: 400px">
         警告：
         <n-input
-          class="m-auto"
           status="warning"
           v-model="inputValue"
+          @click="clickInput"
           @change="onChange"
           @input="onInput"
         />
@@ -84,8 +83,48 @@
       <div class="m-auto" style="width: 400px">
         失败：
         <n-input
-          class="m-auto"
           status="error"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div>
+      <div class="m-auto" style="width: 400px">
+        <n-input
+          status="success"
+          size="xs"
+          icon="n-icon-ok"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          status="success"
+          size="sm"
+          icon="n-icon-ok"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          status="success"
+          size="base"
+          icon="n-icon-ok"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        /><n-input
+          status="success"
+          size="lg"
+          icon="n-icon-ok"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          status="success"
+          size="xl"
+          icon="n-icon-ok"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
@@ -130,6 +169,9 @@ export default {
     },
     onInput(val) {
       console.log("获取正在输入的值:", val);
+    },
+    clickInput(e) {
+      console.log(e);
     }
   }
 };

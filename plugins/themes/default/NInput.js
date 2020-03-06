@@ -1,19 +1,27 @@
 const NInput = {
-  baseClass: 'border block rounded outline-none',
+  baseClass: 'border block rounded outline-none w-full',
+  divClass: 'relative',
+  iconClass: 'icon iconfont absolute top-0 ',
   defaultStatusClass: 'bg-white',
   warningStatusClass: 'border-yellow-400 bg-yellow-100',
   errorStatusClass: 'border-red-300 bg-red-100',
   successStatusClass: 'border-green-300 bg-green-100',
   disabledClass: 'bg-gray-100 cursor-not-allowed opacity-75',
-  // defaultSizeClass: 'p-3',
-  // largeSizeClass: 'p-4 text-lg',
-  // smallSizeClass: 'p-2 text-sm',
   defaultSizeClass: "p-2 text-sm",
-  xsSizeClass: "p-2 text-sm",
+  xsSizeClass: "p-2 text-xs",
   smSizeClass: "p-3 text-sm",
   baseSizeClass: "p-3 text-base",
   lgSizeClass: "p-4 text-lg",
-  xlSizeClass: "p-4 text-xl"
+  xlSizeClass: "p-4 text-xl",
+  xsDefaultSizeClass: "p-2 text-base",
+  xsIconSizeClass: "p-2 text-base",
+  smIconSizeClass: "p-3 text-base",
+  baseIconSizeClass: "p-3 text-lg",
+  lgIconSizeClass: "p-4 text-xl",
+  xlIconSizeClass: "p-4 text-2xl",
+  iconSuccessClass: "n-icon-ok",
+  iconWarningClass: "n-icon-tips",
+  iconErrorClass: "n-icon-close",
 };
 
 export default NInput;

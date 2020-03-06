@@ -28,6 +28,8 @@ import NInputTheme from "../plugins/themes/default/NInput";
 
 const {
   baseClass,
+  divClass,
+  iconClass,
   defaultStatusClass,
   successStatusClass,
   warningStatusClass,
@@ -38,7 +40,16 @@ const {
   smSizeClass,
   baseSizeClass,
   lgSizeClass,
-  xlSizeClass
+  xlSizeClass,
+  xsDefaultSizeClass,
+  xsIconSizeClass,
+  smIconSizeClass,
+  baseIconSizeClass,
+  lgIconSizeClass,
+  xlIconSizeClass,
+  iconSuccessClass,
+  iconWarningClass,
+  iconErrorClass
 } = NInputTheme;
 
 export default {
@@ -64,7 +75,7 @@ export default {
     },
     size: {
       type: String,
-      default: null,
+      default: "sm",
       validator: function(value) {
         return (
           value === null ||
@@ -146,6 +157,14 @@ export default {
       type: [String, Object, Array],
       default: baseClass
     },
+    divClass: {
+      type: [String, Object, Array],
+      default: divClass
+    },
+    iconClass: {
+      type: [String, Object, Array],
+      default: iconClass
+    },
     defaultStatusClass: {
       type: [String, Object, Array],
       default: defaultStatusClass
@@ -189,19 +208,43 @@ export default {
     xlSizeClass: {
       type: [String, Object, Array],
       default: xlSizeClass
+    },
+    xsDefaultSizeClass: {
+      type: [String, Object, Array],
+      default: xsDefaultSizeClass
+    },
+    xsIconSizeClass: {
+      type: [String, Object, Array],
+      default: xsIconSizeClass
+    },
+    smIconSizeClass: {
+      type: [String, Object, Array],
+      default: smIconSizeClass
+    },
+    baseIconSizeClass: {
+      type: [String, Object, Array],
+      default: baseIconSizeClass
+    },
+    lgIconSizeClass: {
+      type: [String, Object, Array],
+      default: lgIconSizeClass
+    },
+    xlIconSizeClass: {
+      type: [String, Object, Array],
+      default: xlIconSizeClass
+    },
+    iconSuccessClass: {
+      type: [String, Object, Array],
+      default: iconSuccessClass
+    },
+    iconWarningClass: {
+      type: [String, Object, Array],
+      default: iconWarningClass
+    },
+    iconErrorClass: {
+      type: [String, Object, Array],
+      default: iconErrorClass
     }
-    // defaultSizeClass: {
-    //   type: [String, Object, Array],
-    //   default: defaultSizeClass
-    // },
-    // largeSizeClass: {
-    //   type: [String, Object, Array],
-    //   default: largeSizeClass
-    // },
-    // smallSizeClass: {
-    //   type: [String, Object, Array],
-    //   default: smallSizeClass
-    // }
   },
 
   data() {
@@ -265,11 +308,82 @@ export default {
           break;
       }
 
+      if (this.status && this.size) {
+        switch (this.size) {
+          case "xs":
+            classes.push("pr-10");
+            break;
+          case "sm":
+            classes.push("pr-12");
+            break;
+          case "base":
+            classes.push("pr-12");
+            break;
+          case "lg":
+            classes.push("pr-16");
+            break;
+          case "xl":
+            classes.push("pr-16");
+            break;
+          default:
+            classes.push("pr-10");
+            break;
+        }
+      }
+
+      return classes;
+    },
+
+    /**
+     * The default classes for the input
+     * icon的默认类
+     * @return {Array}
+     */
+    iconCurrentClass() {
+      let classes = [this.iconClass];
+      switch (this.size) {
+        case "xs":
+          classes.push(this.xsIconSizeClass);
+          break;
+        case "sm":
+          classes.push(this.smIconSizeClass);
+          break;
+        case "base":
+          classes.push(this.baseIconSizeClass);
+          break;
+        case "lg":
+          classes.push(this.lgIconSizeClass);
+          break;
+        case "xl":
+          classes.push(this.xlIconSizeClass);
+          break;
+        default:
+          classes.push(this.xsDefaultSizeClass);
+          break;
+      }
+      switch (this.status) {
+        case "success":
+          classes.push(this.iconSuccessClass);
+          break;
+        case "warning":
+          classes.push(this.iconWarningClass);
+          break;
+        case "error":
+          classes.push(this.iconErrorClass);
+          break;
+        // default:
+        //   classes.push("");
+        //   break;
+      }
       return classes;
     }
   },
 
   methods: {
+    onClick(e) {
+      this.$emit("click", e);
+    },
+
     onBlur(e) {
       this.$emit("blur", e);
     },
@@ -304,9 +418,45 @@ export default {
         pattern: this.pattern,
         placeholder: this.placeholder,
         readonly: this.readonly,
-        required: this.required
-        // event: ["focus", "blur", "input", "change"]
+        required: this.required,
+        event: ["focus", "blur", "input", "change"]
       };
+    },
+
+    getIconAttributes() {
+      return {
+        id: this.id,
+        event: ["click"]
+      };
+    },
+
+    getDivAttributes() {
+      return {
+        id: this.id,
+        event: ["click"]
+      };
+    },
+
+    /**
+     * The component to render according to the props
+     * 渲染Input组件
+     * @return {String}
+     */
+    inputToRender(createElement) {
+      return createElement(
+        "input",
+        {
+          attrs: this.getAttributes(),
+          class: this.currentClass,
+          on: {
+            blur: this.onBlur,
+            focus: this.onFocus,
+            input: this.onInput,
+            change: this.onChange
+          }
+        },
+        this.$slots.default
+      );
     },
 
     /**
@@ -315,10 +465,16 @@ export default {
      * @return {String}
      */
     iconToRender(createElement) {
+      let [...newIconCurrentClass] = this.iconCurrentClass;
+      newIconCurrentClass.push("n-icon-redact1 right-0");
       return createElement(
         "i",
         {
-          class: "icon n-icon-redact1"
+          attrs: this.getIconAttributes(),
+          class: newIconCurrentClass,
+          on: {
+            click: this.onClick
+          }
         },
         this.$slots.default
       );
@@ -327,18 +483,15 @@ export default {
 
   render: function(createElement) {
     return createElement(
-      "input",
+      "div",
       {
-        attrs: this.getAttributes(),
-        class: this.currentClass,
+        attrs: this.getDivAttributes(),
+        class: this.divClass,
         on: {
-          blur: this.onBlur,
-          focus: this.onFocus,
-          input: this.onInput,
-          change: this.onChange
+          click: this.onClick
         }
       },
-      [this.iconToRender(createElement)]
+      [this.inputToRender(createElement), this.iconToRender(createElement)]
       // this.$slots.default
     );
   }
