@@ -36,9 +36,9 @@ export default {
   css: [
     "~assets/fonts/iconfont.css",
     "~assets/css/main.css",
-    // "tailwindcss/dist/base.css",
-    // "tailwindcss/dist/components.css",
-    // "tailwindcss/dist/utilities.css"
+    "tailwindcss/dist/base.css",
+    "tailwindcss/dist/components.css",
+    "tailwindcss/dist/utilities.css"
   ],
   /*
    ** Plugins to load before mounting the App

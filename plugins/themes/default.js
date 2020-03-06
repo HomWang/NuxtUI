@@ -18,16 +18,44 @@
 import NButton from './default/NButton'
 import NIcon from './default/NIcon'
 import NTable from './default/NTable'
+import NTableColumn from './default/NTableColumn'
+import NGrid from "./components/NGrid"
+import NFlex from "./components/NFlex"
+import NInput from "./components/NInput"
+import NContainer from "./components/NContainer"
+import NHeader from "./components/NHeader"
+import NAside from "./components/NAside"
+import NMain from "./components/NMain"
+import NFooter from "./components/NFooter"
 
 const DefaultTheme = {
   NButton,
   NIcon,
-  NTable
+  NTable,
+  NTableColumn,
+  NGrid,
+  NFlex,
+  NInput,
+  NContainer,
+  NHeader,
+  NAside,
+  NMain,
+  NFooter
 }
 
 export {
   NButton,
-  NIcon
+  NIcon,
+  NTable,
+  NTableColumn,
+  NGrid,
+  NFlex,
+  NInput,
+  NContainer,
+  NHeader,
+  NAside,
+  NMain,
+  NFooter
 }
 
 export default DefaultTheme

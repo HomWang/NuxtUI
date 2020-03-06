@@ -24,7 +24,7 @@ const {
 export default {
   name: "NButton",
 
-  install (Vue, theme) {
+  install(Vue, theme) {
     selfInstall(Vue, theme, this);
   },
 
@@ -32,7 +32,7 @@ export default {
     tagName: {
       type: String,
       default: "button",
-      validator: function (value) {
+      validator: function(value) {
         return ["button", "a"].indexOf(value) !== -1;
       }
     },
@@ -51,7 +51,7 @@ export default {
     variant: {
       type: String,
       default: null,
-      validator: function (value) {
+      validator: function(value) {
         return (
           value === null ||
           [
@@ -68,7 +68,7 @@ export default {
     size: {
       type: String,
       default: null,
-      validator: function (value) {
+      validator: function(value) {
         return (
           value === null ||
           ["xs", "sm", "base", "lg", "xl"].indexOf(value) !== -1
@@ -77,11 +77,11 @@ export default {
     },
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     loadingClass: {
       type: [String, Object, Array],
-      default: loadingClass,
+      default: loadingClass
     },
     icon: {
       type: String,
@@ -203,7 +203,7 @@ export default {
      * 按钮的默认类
      * @return {Array}
      */
-    currentClass () {
+    currentClass() {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
@@ -215,10 +215,6 @@ export default {
         classes.push(this.disabledClass);
       }
 
-      // if (this.loading) {
-      //   classes.push(this.loadingClass);
-      // }
-
       switch (this.size) {
         case "xs":
           classes.push(this.xsSizeClass);
@@ -229,8 +225,6 @@ export default {
         case "base":
           classes.push(this.baseSizeClass);
           break;
-        case "lg":
-          classes.push(this.lgSizeClass);
           break;
         case "lg":
           classes.push(this.lgSizeClass);
@@ -270,11 +264,11 @@ export default {
       return classes;
     },
 
-    isInertiaLinkComponentAvailable () {
+    isInertiaLinkComponentAvailable() {
       return !!this.$options.components.InertiaLink;
     },
 
-    isRouterLinkComponentAvailable () {
+    isRouterLinkComponentAvailable() {
       return !!(
         this.$options.components.RouterLink || this.$options.components.NuxtLink
       );
@@ -287,7 +281,7 @@ export default {
      * 使用创建路由器链接
      * @return {Boolean}
      */
-    isARouterLink () {
+    isARouterLink() {
       return this.to !== undefined && this.isRouterLinkComponentAvailable;
     },
 
@@ -297,7 +291,7 @@ export default {
      * 如果我们定义了"href"并且InertiaLink组件可用，我们可以用于创建interia链接
      * @return {Boolean}
      */
-    isAnIntertiaLink () {
+    isAnIntertiaLink() {
       return this.href !== undefined && this.isInertiaLinkComponentAvailable;
     },
 
@@ -306,7 +300,7 @@ export default {
      * 根据道具渲染的组件
      * @return {String}
      */
-    componentToRender () {
+    componentToRender() {
       if (this.isARouterLink) {
         return (
           this.$options.components.NuxtLink ||
@@ -323,28 +317,27 @@ export default {
       }
 
       return this.tagName;
-    },
-
+    }
   },
 
   methods: {
-    onBlur (e) {
+    onBlur(e) {
       this.$emit("blur", e);
     },
 
-    onFocus (e) {
+    onFocus(e) {
       this.$emit("focus", e);
     },
 
-    onClick (e) {
+    onClick(e) {
       this.$emit("click", e);
     },
 
-    blur () {
+    blur() {
       this.$el.blur();
     },
 
-    focus () {
+    focus() {
       this.$el.focus();
     },
 
@@ -353,7 +346,7 @@ export default {
      * 按钮类型
      * @return {Object}
      */
-    getAttributes () {
+    getAttributes() {
       if (this.isAnIntertiaLink) {
         return {
           href: this.href,
@@ -406,7 +399,7 @@ export default {
     }
   },
 
-  render: function (createElement) {
+  render: function(createElement) {
     return createElement(
       this.componentToRender,
       {
@@ -420,17 +413,16 @@ export default {
       },
       this.icon
         ? [
-          this.iconType === "after" ? this.$slots.default : "",
-          createElement("i", {
-            attrs: {
-
-              class: `${this.iconClass} ${this.icon} ${
-                this.iconType === "after" ? "ml-1" : "mr-1"
-                } ${this.loading ? this.loadingClass : ''}`
-            }
-          }),
-          this.iconType === "before" ? this.$slots.default : ""
-        ]
+            this.iconType === "after" ? this.$slots.default : "",
+            createElement("i", {
+              attrs: {
+                class: `${this.iconClass} ${this.icon} ${
+                  this.iconType === "after" ? "ml-2" : "mr-2"
+                } ${this.loading ? this.loadingClass : ""}`
+              }
+            }),
+            this.iconType === "before" ? this.$slots.default : ""
+          ]
         : this.$slots.default
     );
   }
