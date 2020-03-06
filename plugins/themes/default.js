@@ -17,10 +17,12 @@
 
 import NButton from './default/NButton'
 import NIcon from './default/NIcon'
+import NTable from './default/NTable'
 
 const DefaultTheme = {
   NButton,
-  NIcon
+  NIcon,
+  NTable
 }
 
 export {

@@ -156,6 +156,24 @@
           size="xl"
         ></n-icon>
       </div>
+      <div class="mt-10">
+        <div class="text-center">
+          <p>基础列表</p>
+        </div>
+        <!-- data border show-header stripe height max-height @click-column @click-row @click-header-->
+        <n-table :data="tableData" :border="true" :stripe="true" @click-column="onClickColumn" @click-row="onClickRow" @click-header="onClickHeader">
+          <n-table-column lable="第一列" prop="a">
+            <template slot-scope="scope">
+              {{scope.row.a}}
+            </template>
+          </n-table-column>
+          <n-table-column lable="第二列" prop="b"></n-table-column>
+          <n-table-column lable="第三列" prop="c"></n-table-column>
+          <template slot="footer">
+            footer
+          </template>
+        </n-table>
+      </div>
     </div>
   </div>
 </template>
@@ -163,16 +181,21 @@
 <script>
 import NButton from "~/components/NButton";
 import NIcon from "~/components/NIcon";
+import NTable from "~/components/NTable";
+import NTableColumn from "~/components/NTableColumn";
 import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
     Logo,
     NButton,
+    NTable,
+    NTableColumn,
     NIcon
   },
   data () {
     return {
+      tableData:[{a:1,b:2,c:3},{a:2,b:3,c:4},{a:3,b:4,c:5},{a:2,b:3,c:4},{a:3,b:4,c:5}],
       text: {
         value: null,
         disabled: null,
@@ -183,6 +206,17 @@ export default {
   },
   mounted () {
     console.log(this.comId);
+  },
+  methods:{
+    onClickRow(data){
+      console.log("row",data)
+    },
+    onClickHeader($event,data){
+      console.log("header",$event,data)
+      },
+    onClickColumn(data){
+      console.log("column",data)
+      },
   }
 };
 </script>
