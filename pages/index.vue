@@ -1,188 +1,136 @@
 <template>
-  <div class="container">
-    <div class="mb-20">
-      <div class="mt-10">
-        <div class="text-center">
-          <p>基本按钮组</p>
-          <p>basic buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button
-            class="ml-10"
-            size="xs"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="primary"
-            size="sm"
-          >button text</n-button>
-          <n-button
-            class="ml-2"
-            variant="secondary"
-            size="sm"
-          >次要按钮</n-button>
-          <n-button
-            class="ml-2"
-            variant="tertiary"
-            size="sm"
-          >第三按钮</n-button>
-          <n-button
-            class="ml-10"
-            variant="success"
-            size="base"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="warning"
-            size="lg"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="danger"
-            size="xl"
-          >button text</n-button>
-        </div>
+  <!-- <div class="container"> -->
+  <!-- class="w-screen h-screen" -->
+  <div>
+    <!-- <div class="m-auto" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器一
+        </n-header>
+        <n-container>
+          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+            <n-footer class="bg-gray-600">底部</n-footer>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器二
+        </n-header>
+        <n-container>
+          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器三
+        </n-header>
+        <n-container>
+          <n-main class="bg-gray-400">内容</n-main>
+          <n-footer class="bg-gray-600">底部</n-footer>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-aside class="w-64 bg-gray-500">布局容器四</n-aside>
+        <n-main class="bg-gray-400">内容</n-main>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+        <n-container>
+          <n-header class="text-center bg-gray-600">
+            布局容器五
+          </n-header>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+            <n-footer class="bg-gray-600">底部</n-footer>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div> -->
+    <div class="tc">
+      <div class="m-auto" style="width: 400px">
+        成功：
+        <n-input
+          class="m-auto"
+          status="success"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
       </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>禁用按钮组</p>
-          <p>Disabled buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button
-            class="ml-10"
-            disabled
-            size="xs"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="primary"
-            disabled
-            size="sm"
-          >button text</n-button>
-          <n-button
-            class="ml-2"
-            variant="secondary"
-            disabled
-            size="sm"
-          >次要按钮</n-button>
-          <n-button
-            class="ml-2"
-            variant="tertiary"
-            disabled
-            size="sm"
-          >第三按钮</n-button>
-          <n-button
-            class="ml-10"
-            variant="success"
-            disabled
-            size="base"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="warning"
-            disabled
-            size="lg"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="danger"
-            disabled
-            size="xl"
-          >button text</n-button>
-        </div>
+      <div class="m-auto" style="width: 400px">
+        警告：
+        <n-input
+          class="m-auto"
+          status="warning"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
       </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>图标按钮组</p>
-          <p>Disabled buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button
-            icon="icon-iconjiazai"
-            iconType="before"
-            class="ml-10"
-            disabled
-            size="xs"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            icon="icon-coinCity_heading_ite"
-            variant="primary"
-            size="sm"
-          >button text</n-button>
-          <n-button
-            class="ml-2"
-            icon="icon-otc_body_icon_sele"
-            variant="secondary"
-            size="sm"
-          >次要按钮</n-button>
-          <n-button
-            class="ml-2"
-            icon="icon-coinCity_location"
-            iconType="before"
-            variant="tertiary"
-            size="sm"
-          >第三按钮</n-button>
-          <n-button
-            class="ml-10"
-            icon="icon-otc_body_icon_sele"
-            variant="success"
-            size="base"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            icon="icon-Exchange_trading_switch"
-            variant="warning"
-            size="lg"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            :loading="true"
-            icon="iconsuanli_icon_kline"
-            iconType="before"
-            variant="danger"
-            size="xl"
-          >button text</n-button>
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>图标</p>
-        </div>
-        <n-icon
-          class="iconjiazaizhong"
-          :loading="true"
-          size="xl"
-        ></n-icon>
+      <div class="m-auto" style="width: 400px">
+        失败：
+        <n-input
+          class="m-auto"
+          status="error"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NButton from "~/components/NButton";
-import NIcon from "~/components/NIcon";
-import Logo from "~/components/Logo.vue";
+// import NCheckbox from "~/components/NCheckbox";
+// import NGrid from "~/components/NGrid";
+// import NFlex from "~/components/NFlex";
+// import NContainer from "~/components/NContainer";
+// import NHeader from "~/components/NHeader";
+// import NAside from "~/components/NAside";
+// import NMain from "~/components/NMain";
+// import NFooter from "~/components/NFooter";
+import NInput from "~/components/NInput";
 
 export default {
   components: {
-    Logo,
-    NButton,
-    NIcon
+    // NCheckbox
+    // NGrid
+    // NFlex
+    // NContainer,
+    // NHeader,
+    // NAside,
+    // NMain,
+    // NFooter
+    NInput
   },
-  data () {
+  data() {
     return {
-      text: {
-        value: null,
-        disabled: null,
-        id: "text-field",
-        name: "text-field"
-      }
+      inputValue: ""
     };
   },
-  mounted () {
-    console.log(this.comId);
+  mounted() {},
+  methods: {
+    onChange(val) {
+      console.log("获取到改变后的值:", val);
+    },
+    onInput(val) {
+      console.log("获取正在输入的值:", val);
+    }
   }
 };
 </script>
@@ -203,8 +151,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
