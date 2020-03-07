@@ -1,28 +1,3 @@
-<!-- <input
-    :id="id"
-    ref="input"
-    v-model="currentValue"
-    :type="type"
-    :autocomplete="autocomplete"
-    :autofocus="autofocus"
-    :disabled="disabled"
-    :max="max"
-    :maxlength="maxlength"
-    :min="min"
-    :minlength="minlength"
-    :multiple="multiple"
-    :name="name"
-    :pattern="pattern"
-    :placeholder="placeholder"
-    :readonly="readonly"
-    :required="required"
-    :class="currentClass"
-    @blur="onBlur"
-    @focus="onFocus"
-    @keyup="$emit('keyup', $event)"
-    @keydown="$emit('keydown', $event)"
-  /> -->
-
 <script>
 import NInputTheme from "../plugins/themes/default/NInput";
 
@@ -60,8 +35,6 @@ export default {
     selfInstall(Vue, theme, this);
   },
 
-  // mixins: [commonAttributes, handleClasses, htmlInputMethods],
-
   props: {
     // 是否现实清除
     clearable: {
@@ -72,12 +45,6 @@ export default {
     status: {
       type: String,
       default: ""
-      // validator: function(value) {
-      //   return (
-      //     value === null ||
-      //     ["success", "warning", "error"].indexOf(value) !== -1
-      //   );
-      // }
     },
     size: {
       type: String,
@@ -103,11 +70,6 @@ export default {
       type: [String, Number],
       default: null
     },
-    // model: {
-    //   // v-model
-    //   type: [String, Object, Number, Boolean, Array],
-    //   default: null
-    // },
     // 是否重置
     reset: {
       type: Boolean,
@@ -468,19 +430,12 @@ export default {
         case "error":
           classes.push(this.iconErrorClass);
           break;
-        // default:
-        //   classes.push("");
-        //   break;
       }
       return classes;
     }
   },
 
   methods: {
-    // onClick(e) {
-    //   this.$emit("click", e);
-    // },
-
     onBlur(e) {
       this.$emit("blur", e);
     },
@@ -585,24 +540,15 @@ export default {
   },
 
   render: function(createElement) {
-    // return this.$createElement(expandRow, {
-    //   ref: "child",
-    //   props: {
-    //     row: params.row
-    //   }
-    // });
     return createElement(
       "div",
       {
         ref: "input",
         attrs: this.getDivAttributes(),
         class: this.divClass,
-        on: {
-          // click: this.onClick
-        }
+        on: {}
       },
       [this.inputToRender(createElement), this.iconToRender(createElement)]
-      // this.$slots.default
     );
   }
 };
