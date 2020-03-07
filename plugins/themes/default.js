@@ -25,10 +25,14 @@ import NHeader from "./default/NHeader"
 import NAside from "./default/NAside"
 import NMain from "./default/NMain"
 import NFooter from "./default/NFooter"
+import NTable from './default/NTable'
+import NTableColumn from './default/NTableColumn'
 
 const DefaultTheme = {
   NButton,
   NIcon,
+  NTable,
+  NTableColumn,
   NGrid,
   NFlex,
   NInput,
@@ -42,6 +46,8 @@ const DefaultTheme = {
 export {
   NButton,
   NIcon,
+  NTable,
+  NTableColumn,
   NGrid,
   NFlex,
   NInput,
