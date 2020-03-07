@@ -17,14 +17,14 @@
 
 import NButton from './default/NButton'
 import NIcon from './default/NIcon'
-import NGrid from "./components/NGrid"
-import NFlex from "./components/NFlex"
-import NInput from "./components/NInput"
-import NContainer from "./components/NContainer"
-import NHeader from "./components/NHeader"
-import NAside from "./components/NAside"
-import NMain from "./components/NMain"
-import NFooter from "./components/NFooter"
+import NGrid from "./default/NGrid"
+import NFlex from "./default/NFlex"
+import NInput from "./default/NInput"
+import NContainer from "./default/NContainer"
+import NHeader from "./default/NHeader"
+import NAside from "./default/NAside"
+import NMain from "./default/NMain"
+import NFooter from "./default/NFooter"
 
 const DefaultTheme = {
   NButton,
@@ -42,7 +42,7 @@ const DefaultTheme = {
 export {
   NButton,
   NIcon,
-  NRow,
+  NGrid,
   NFlex,
   NInput,
   NContainer,
