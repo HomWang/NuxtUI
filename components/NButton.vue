@@ -87,6 +87,7 @@ export default {
       type: String,
       default: ""
     },
+    // 默认：after(之后) before(之前)
     iconType: {
       type: String,
       default: "after"
