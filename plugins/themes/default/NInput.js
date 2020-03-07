@@ -1,7 +1,8 @@
 const NInput = {
-  baseClass: 'border block rounded outline-none w-full',
+  baseClass: 'border block rounded outline-none w-full hover:border-gray-400 focus:border-blue-500',
   divClass: 'relative',
   iconClass: 'icon iconfont absolute top-0 ',
+  clearableClass: 'text-gray-500 hover:text-gray-600 cursor-pointer',
   defaultStatusClass: 'bg-white',
   warningStatusClass: 'border-yellow-400 bg-yellow-100',
   errorStatusClass: 'border-red-300 bg-red-100',
@@ -19,9 +20,9 @@ const NInput = {
   baseIconSizeClass: "p-3 text-lg",
   lgIconSizeClass: "p-4 text-xl",
   xlIconSizeClass: "p-4 text-2xl",
-  iconSuccessClass: "n-icon-ok",
-  iconWarningClass: "n-icon-tips",
-  iconErrorClass: "n-icon-close",
+  iconSuccessClass: "n-icon-ok text-green-600",
+  iconWarningClass: "n-icon-tips text-yellow-600",
+  iconErrorClass: "n-icon-close text-red-600",
 };
 
 export default NInput;

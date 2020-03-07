@@ -63,19 +63,19 @@
     <div class="tc">
       <div class="m-auto" style="width: 400px">
         成功：
-        <n-input
+        <!-- :status="newStatus" -->
+        <!-- <n-input
           status="success"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
-        />
+        /> -->
       </div>
-      <div class="m-auto" style="width: 400px">
+      <!-- <div class="m-auto" style="width: 400px">
         警告：
         <n-input
           status="warning"
           v-model="inputValue"
-          @click="clickInput"
           @change="onChange"
           @input="onInput"
         />
@@ -88,47 +88,53 @@
           @change="onChange"
           @input="onInput"
         />
-      </div>
+      </div> -->
       <div class="m-auto" style="width: 400px">
-        <n-input
-          status="success"
+        <!-- <n-input
           size="xs"
-          icon="n-icon-ok"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
         />
         <n-input
-          status="success"
           size="sm"
-          icon="n-icon-ok"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
         />
         <n-input
-          status="success"
           size="base"
-          icon="n-icon-ok"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
         /><n-input
-          status="success"
           size="lg"
-          icon="n-icon-ok"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
-        />
+        /> -->
         <n-input
-          status="success"
           size="xl"
-          icon="n-icon-ok"
+          :disabled="newDisabled"
+          icon="n-icon-clean"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
+          clearable
         />
+        <p @click="clearAAA">点击清空</p>
       </div>
     </div>
   </div>
@@ -159,19 +165,35 @@ export default {
   },
   data() {
     return {
-      inputValue: ""
+      inputValue: "",
+      newDisabled: false,
+      newStatus: "" //error warning success
     };
   },
   mounted() {},
   methods: {
+    clearAAA() {
+      this.inputValue = "";
+    },
     onChange(val) {
-      console.log("获取到改变后的值:", val);
+      console.log("获取到改变后的值:", val, this.inputValue);
     },
     onInput(val) {
+      this.inputValue = val;
+      console.log("传出来的值：", val, "监听到的值", this.inputValue);
+      if (val == 1) {
+        this.newStatus = "success";
+      } else if (val == 2) {
+        this.newStatus = "warning";
+      } else if (val == 3) {
+        this.newStatus = "error";
+      } else {
+        this.newStatus = "";
+      }
       console.log("获取正在输入的值:", val);
     },
     clickInput(e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 };

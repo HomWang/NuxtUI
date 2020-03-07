@@ -30,6 +30,7 @@ const {
   baseClass,
   divClass,
   iconClass,
+  clearableClass,
   defaultStatusClass,
   successStatusClass,
   warningStatusClass,
@@ -62,16 +63,21 @@ export default {
   // mixins: [commonAttributes, handleClasses, htmlInputMethods],
 
   props: {
+    // 是否现实清除
+    clearable: {
+      type: Boolean,
+      default: false
+    },
     // 状态 success(成功) 警告(warning) 失败(error)
     status: {
       type: String,
-      default: null,
-      validator: function(value) {
-        return (
-          value === null ||
-          ["success", "warning", "error"].indexOf(value) !== -1
-        );
-      }
+      default: ""
+      // validator: function(value) {
+      //   return (
+      //     value === null ||
+      //     ["success", "warning", "error"].indexOf(value) !== -1
+      //   );
+      // }
     },
     size: {
       type: String,
@@ -83,16 +89,25 @@ export default {
         );
       }
     },
+    icon: {
+      type: String,
+      default: ""
+    },
+    // 默认：after(之后) before(之前)
+    iconType: {
+      type: String,
+      default: "after"
+    },
     // 绑定值
     value: {
       type: [String, Number],
       default: null
     },
-    model: {
-      // v-model
-      type: [String, Object, Number, Boolean, Array],
-      default: null
-    },
+    // model: {
+    //   // v-model
+    //   type: [String, Object, Number, Boolean, Array],
+    //   default: null
+    // },
     // 是否重置
     reset: {
       type: Boolean,
@@ -149,9 +164,15 @@ export default {
       type: String,
       default: null
     },
+    // input类型
     type: {
       type: String,
       default: "text"
+    },
+    // 是否禁止输入
+    disabled: {
+      type: [Boolean, String],
+      default: false
     },
     baseClass: {
       type: [String, Object, Array],
@@ -164,6 +185,10 @@ export default {
     iconClass: {
       type: [String, Object, Array],
       default: iconClass
+    },
+    clearableClass: {
+      type: [String, Object, Array],
+      default: clearableClass
     },
     defaultStatusClass: {
       type: [String, Object, Array],
@@ -249,12 +274,16 @@ export default {
 
   data() {
     return {
-      currentValue: null
+      currentValue: this.value
     };
   },
 
   watch: {
     value(value) {
+      console.log("监听的value值：", value);
+      if (!value) {
+        this.$el.children[0].value = "";
+      }
       this.currentValue = value;
     }
   },
@@ -271,6 +300,10 @@ export default {
         `${this.$options._componentTag}-size-${this.size || "default"}`,
         this.baseClass
       ];
+
+      if (this.disabled) {
+        classes.push(this.disabledClass);
+      }
 
       switch (this.size) {
         case "xs":
@@ -309,25 +342,73 @@ export default {
       }
 
       if (this.status && this.size) {
-        switch (this.size) {
-          case "xs":
-            classes.push("pr-10");
-            break;
-          case "sm":
-            classes.push("pr-12");
-            break;
-          case "base":
-            classes.push("pr-12");
-            break;
-          case "lg":
-            classes.push("pr-16");
-            break;
-          case "xl":
-            classes.push("pr-16");
-            break;
-          default:
-            classes.push("pr-10");
-            break;
+        // 判断之前
+        if (this.iconType === "after") {
+          switch (this.size) {
+            case "xs":
+              classes.push("pr-8");
+              break;
+            case "sm":
+              classes.push("pr-10");
+              break;
+            case "base":
+              classes.push("pr-10");
+              break;
+            case "lg":
+              classes.push("pr-12");
+              break;
+            case "xl":
+              classes.push("pr-12");
+              break;
+            default:
+              classes.push("pr-10");
+              break;
+          }
+        } else {
+          switch (this.size) {
+            case "xs":
+              classes.push("pl-8");
+              break;
+            case "sm":
+              classes.push("pl-10");
+              break;
+            case "base":
+              classes.push("pl-10");
+              break;
+            case "lg":
+              classes.push("pl-12");
+              break;
+            case "xl":
+              classes.push("pl-12");
+              break;
+            default:
+              classes.push("pl-10");
+              break;
+          }
+        }
+      } else {
+        // 判断之前
+        if (this.iconType === "before") {
+          switch (this.size) {
+            case "xs":
+              classes.push("pl-8");
+              break;
+            case "sm":
+              classes.push("pl-10");
+              break;
+            case "base":
+              classes.push("pl-10");
+              break;
+            case "lg":
+              classes.push("pl-12");
+              break;
+            case "xl":
+              classes.push("pl-12");
+              break;
+            default:
+              classes.push("pl-10");
+              break;
+          }
         }
       }
 
@@ -340,7 +421,18 @@ export default {
      * @return {Array}
      */
     iconCurrentClass() {
-      let classes = [this.iconClass];
+      let classes = [this.iconClass, this.icon];
+
+      // 判断之后
+      if (this.iconType === "after") {
+        classes.push("right-0");
+      }
+
+      // 判断之前
+      if (this.iconType === "before") {
+        classes.push("left-0");
+      }
+
       switch (this.size) {
         case "xs":
           classes.push(this.xsIconSizeClass);
@@ -361,6 +453,11 @@ export default {
           classes.push(this.xsDefaultSizeClass);
           break;
       }
+
+      if (this.clearable) {
+        classes.push(this.clearableClass);
+      }
+
       switch (this.status) {
         case "success":
           classes.push(this.iconSuccessClass);
@@ -380,9 +477,9 @@ export default {
   },
 
   methods: {
-    onClick(e) {
-      this.$emit("click", e);
-    },
+    // onClick(e) {
+    //   this.$emit("click", e);
+    // },
 
     onBlur(e) {
       this.$emit("blur", e);
@@ -402,10 +499,19 @@ export default {
       }
     },
 
+    // 清除input的值
+    onClearable() {
+      this.$emit("input", "");
+      this.$emit("change", "");
+      this.$emit("clear");
+      this.currentValue = "";
+    },
+
     getAttributes() {
       return {
         id: this.id,
         type: this.type,
+        value: this.currentValue,
         autocomplete: this.autocomplete,
         autofocus: this.autofocus,
         disabled: this.disabled,
@@ -418,22 +524,19 @@ export default {
         pattern: this.pattern,
         placeholder: this.placeholder,
         readonly: this.readonly,
-        required: this.required,
-        event: ["focus", "blur", "input", "change"]
+        required: this.required
       };
     },
 
     getIconAttributes() {
       return {
-        id: this.id,
-        event: ["click"]
+        id: this.id
       };
     },
 
     getDivAttributes() {
       return {
-        id: this.id,
-        event: ["click"]
+        id: this.id
       };
     },
 
@@ -466,14 +569,14 @@ export default {
      */
     iconToRender(createElement) {
       let [...newIconCurrentClass] = this.iconCurrentClass;
-      newIconCurrentClass.push("n-icon-redact1 right-0");
-      return createElement(
+      return this.$createElement(
         "i",
         {
+          ref: "icon",
           attrs: this.getIconAttributes(),
           class: newIconCurrentClass,
           on: {
-            click: this.onClick
+            click: this.onClearable
           }
         },
         this.$slots.default
@@ -482,13 +585,20 @@ export default {
   },
 
   render: function(createElement) {
+    // return this.$createElement(expandRow, {
+    //   ref: "child",
+    //   props: {
+    //     row: params.row
+    //   }
+    // });
     return createElement(
       "div",
       {
+        ref: "input",
         attrs: this.getDivAttributes(),
         class: this.divClass,
         on: {
-          click: this.onClick
+          // click: this.onClick
         }
       },
       [this.inputToRender(createElement), this.iconToRender(createElement)]
