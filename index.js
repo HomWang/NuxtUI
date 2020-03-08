@@ -11,6 +11,7 @@ import NHeader from "./components/NHeader"
 import NAside from "./components/NAside"
 import NMain from "./components/NMain"
 import NFooter from "./components/NFooter"
+import NTable from "./components/NTable"
 
 const components = {
   NButton,
@@ -22,7 +23,8 @@ const components = {
   NHeader,
   NAside,
   NMain,
-  NFooter
+  NFooter,
+  NTable
 };
 
 /**

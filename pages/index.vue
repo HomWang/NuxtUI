@@ -3,8 +3,11 @@
   <!-- class="w-screen h-screen" -->
   <div>
     <div class="tc">
-      <!--       
-      <div class="m-auto" style="width: 400px">
+
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
         成功：
         <n-input
           status="success"
@@ -13,7 +16,10 @@
           @input="onInput"
         />
       </div>
-      <div class="m-auto" style="width: 400px">
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
         警告：
         <n-input
           status="warning"
@@ -22,7 +28,10 @@
           @input="onInput"
         />
       </div>
-      <div class="m-auto" style="width: 400px">
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
         失败：
         <n-input
           status="error"
@@ -31,7 +40,10 @@
           @input="onInput"
         />
       </div>
-      <div class="m-auto" style="width: 400px">
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
         <n-input
           size="xs"
           :disabled="newDisabled"
@@ -58,7 +70,8 @@
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
-        /><n-input
+        />
+        <n-input
           size="lg"
           :disabled="newDisabled"
           icon="n-icon-search"
@@ -70,70 +83,13 @@
         <n-input
           size="xl"
           :disabled="newDisabled"
-          icon="n-icon-clean"
           v-model="inputValue"
           @change="onChange"
           @input="onInput"
           clearable
         />
         <p @click="clearAAA">点击清空</p>
-      </div> -->
-      <!-- <n-flex class="mt-5 bg-gray-200">
-        <n-flex
-          flex="1"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          <div>
-            短内容
-          </div>
-        </n-flex>
-        <n-flex
-          flex="1"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          中等内容
-        </n-flex>
-        <n-flex
-          flex="1"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          这是一个很长的内容
-        </n-flex>
-      </n-flex>
-
-      <n-flex class="mt-5 bg-gray-200">
-        <n-flex
-          flex="1"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          <div>
-            短内容
-          </div>
-        </n-flex>
-        <n-flex
-          flex="none"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          中等内容中等内容中等内容中等内容中等内容中等内容
-        </n-flex>
-        <n-flex
-          flex="1"
-          class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
-        >
-          这是一个很长的内容
-        </n-flex>
-      </n-flex> -->
-      <n-flex class="mt-5 bg-gray-200">
-        <div>
-          1
-        </div>
-        <div>
-          2
-        </div>
-        <div>
-          3
-        </div>
-      </n-flex>
+      </div>
     </div>
   </div>
 </template>
@@ -161,22 +117,22 @@ export default {
     // NFooter
     NInput
   },
-  data() {
+  data () {
     return {
       inputValue: "",
       newDisabled: false,
       newStatus: "" //error warning success
     };
   },
-  mounted() {},
+  mounted () { },
   methods: {
-    clearAAA() {
+    clearAAA () {
       this.inputValue = "";
     },
-    onChange(val) {
+    onChange (val) {
       console.log("获取到改变后的值:", val, this.inputValue);
     },
-    onInput(val) {
+    onInput (val) {
       this.inputValue = val;
       console.log("传出来的值：", val, "监听到的值", this.inputValue);
       if (val == 1) {
@@ -190,7 +146,7 @@ export default {
       }
       console.log("获取正在输入的值:", val);
     },
-    clickInput(e) {
+    clickInput (e) {
       // console.log(e);
     }
   }
@@ -213,8 +169,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
