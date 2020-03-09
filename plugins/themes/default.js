@@ -26,6 +26,7 @@ import NAside from "./default/NAside"
 import NMain from "./default/NMain"
 import NFooter from "./default/NFooter"
 import NTable from './default/NTable'
+import NRadio from './default/NRadio'
 // import NTableColumn from './default/NTableColumn'
 
 const DefaultTheme = {
@@ -40,7 +41,8 @@ const DefaultTheme = {
   NHeader,
   NAside,
   NMain,
-  NFooter
+  NFooter,
+  NRadio,
 }
 
 export {
@@ -55,7 +57,8 @@ export {
   NHeader,
   NAside,
   NMain,
-  NFooter
+  NFooter,
+  NRadio,
 }
 
 export default DefaultTheme
