@@ -131,18 +131,28 @@
           :data="tableData"
           :border="true"
           :stripe="true"
+          hoverColor="bg-blue-400"
+          stripeColor="bg-blue-200"
           @click-column="onClickColumn"
           @click-row="onClickRow"
           @click-header="onClickHeader"
         >
-          <n-table-column lable="第一列" prop="a">
+          <n-table-column lable="第一列">
             <template slot="lable">
-              <n-button icon="icon-iconjiazai" iconType="before" size="xs">
+              <n-button icon="icon-iconjiazai" iconType="before" size="sm">
                 button text
               </n-button>
             </template>
             <template slot-scope="scope">
-              {{ scope.row.a }}
+              <n-button
+                icon="icon-iconjiazai"
+                variant="danger"
+                iconType="before"
+                size="sm"
+                @click.stop="testButton(scope.row)"
+              >
+                button {{ scope.row.a }}
+              </n-button>
             </template>
           </n-table-column>
           <n-table-column lable="第二列" prop="b"></n-table-column>
@@ -217,6 +227,9 @@ export default {
     },
     onClickColumn(data) {
       console.log("column", data);
+    },
+    testButton(data) {
+      console.log("button", data);
     },
     clearAAA() {
       this.inputValue = "";

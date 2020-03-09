@@ -50,6 +50,8 @@ export default {
         return "normal";
       }
     }, //最高 高度
+    hoverColor: { type: String, default: "bg-gray-200" }, //选中颜色
+    stripeColor: { type: String, default: "bg-gray-100" }, //条纹颜色
     stripe: { type: Boolean, default: false }, //是否条纹
     border: { type: Boolean, default: false }, //是否border
     size: { type: String, default: "medium" }, //medium / small / mini
@@ -148,7 +150,7 @@ export default {
     getBodyTrClass(i) {
       let className = "";
       if (this.stripe && i % 2) {
-        className += " " + defaultClass.backgroundGray500;
+        className += " " + this.stripeColor;
       }
       return className;
     },
@@ -160,7 +162,7 @@ export default {
       let renderThList = [];
       NTableColumnList.map(item => {
         // console.log(item.componentOptions.children);
-        let lable = this.getHeaderLable(item);
+        let lable = this.getHeaderLable(item); //获取 template slot label
         renderThList.push(
           createElement(
             TAGTH,
@@ -214,6 +216,12 @@ export default {
               on: {
                 click: () => {
                   this.onClickRow(row);
+                },
+                mouseenter: e => {
+                  e.target.classList.add(this.hoverColor);
+                },
+                mouseleave: e => {
+                  e.target.classList.remove(this.hoverColor);
                 }
               }
             },
