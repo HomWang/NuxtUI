@@ -68,10 +68,28 @@ export default {
       if (this.border) {
         className += " " + defaultClass.border2 + " " + defaultClass.border;
       }
-
+      // className += " " + this.getSize;
       className += " " + defaultClass.baseTableClass;
 
       return className;
+    },
+    /**
+     * 获取 size
+     */
+    getSize() {
+      let result = "";
+      switch (this.size) {
+        case "medium":
+          result = defaultClass.mediumClass;
+          break;
+        case "small":
+          result = defaultClass.smallClass;
+          break;
+        case "mini":
+          result = defaultClass.miniClass;
+          break;
+      }
+      return result;
     },
     /**
      * 获取header样式
@@ -81,6 +99,7 @@ export default {
       if (this.border) {
         className += " " + defaultClass.border;
       }
+      className += " " + this.getSize;
       className += " " + defaultClass.baseHeaderClass;
       return className;
     },
@@ -92,6 +111,7 @@ export default {
       if (this.border) {
         className += " " + defaultClass.border;
       }
+      className += " " + this.getSize;
       className += " " + defaultClass.baseBodyClass;
       return className;
     },
@@ -99,7 +119,7 @@ export default {
      * 获取footer样式
      */
     getFooterClass() {
-      return defaultClass.baseFooterClass;
+      return defaultClass.mediumClass;
     }
   },
   methods: {
@@ -139,6 +159,8 @@ export default {
       let NTableColumnList = this.getNTableColumn();
       let renderThList = [];
       NTableColumnList.map(item => {
+        // console.log(item.componentOptions.children);
+        let lable = this.getHeaderLable(item);
         renderThList.push(
           createElement(
             TAGTH,
@@ -150,11 +172,28 @@ export default {
                 }
               }
             },
-            item.data.attrs.lable
+            lable ? lable.children : item.data.attrs.lable
           )
         );
       });
       return createElement(TAGTHEAD, [createElement(TAGTR, [renderThList])]);
+    },
+    /**
+     * 获取头部自定义lable
+     */
+    getHeaderLable(item) {
+      let i = 0;
+      let result = null;
+      if (!item.componentOptions.children) {
+        return result;
+      }
+      while (i < item.componentOptions.children.length) {
+        if (item.componentOptions.children[i]) {
+          result = item.componentOptions.children[i];
+          break;
+        }
+      }
+      return result;
     },
     /**
      * 创建body

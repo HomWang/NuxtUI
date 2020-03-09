@@ -7,40 +7,25 @@
           <p>basic buttons</p>
         </div>
         <div class="mt-2">
-          <n-button
-            class="ml-10"
-            size="xs"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="primary"
-            size="sm"
-          >button text</n-button>
-          <n-button
-            class="ml-2"
-            variant="secondary"
-            size="sm"
-          >次要按钮</n-button>
-          <n-button
-            class="ml-2"
-            variant="tertiary"
-            size="sm"
-          >第三按钮</n-button>
-          <n-button
-            class="ml-10"
-            variant="success"
-            size="base"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="warning"
-            size="lg"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="danger"
-            size="xl"
-          >button text</n-button>
+          <n-button class="ml-10" size="xs">button text</n-button>
+          <n-button class="ml-10" variant="primary" size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-2" variant="secondary" size="sm"
+            >次要按钮</n-button
+          >
+          <n-button class="ml-2" variant="tertiary" size="sm"
+            >第三按钮</n-button
+          >
+          <n-button class="ml-10" variant="success" size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" size="xl"
+            >button text</n-button
+          >
         </div>
       </div>
       <div class="mt-10">
@@ -49,47 +34,25 @@
           <p>Disabled buttons</p>
         </div>
         <div class="mt-2">
-          <n-button
-            class="ml-10"
-            disabled
-            size="xs"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="primary"
-            disabled
-            size="sm"
-          >button text</n-button>
-          <n-button
-            class="ml-2"
-            variant="secondary"
-            disabled
-            size="sm"
-          >次要按钮</n-button>
-          <n-button
-            class="ml-2"
-            variant="tertiary"
-            disabled
-            size="sm"
-          >第三按钮</n-button>
-          <n-button
-            class="ml-10"
-            variant="success"
-            disabled
-            size="base"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="warning"
-            disabled
-            size="lg"
-          >button text</n-button>
-          <n-button
-            class="ml-10"
-            variant="danger"
-            disabled
-            size="xl"
-          >button text</n-button>
+          <n-button class="ml-10" disabled size="xs">button text</n-button>
+          <n-button class="ml-10" variant="primary" disabled size="sm"
+            >button text</n-button
+          >
+          <n-button class="ml-2" variant="secondary" disabled size="sm"
+            >次要按钮</n-button
+          >
+          <n-button class="ml-2" variant="tertiary" disabled size="sm"
+            >第三按钮</n-button
+          >
+          <n-button class="ml-10" variant="success" disabled size="base"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="warning" disabled size="lg"
+            >button text</n-button
+          >
+          <n-button class="ml-10" variant="danger" disabled size="xl"
+            >button text</n-button
+          >
         </div>
       </div>
       <div class="mt-10">
@@ -104,38 +67,44 @@
             class="ml-10"
             disabled
             size="xs"
-          >button text</n-button>
+            >button text</n-button
+          >
           <n-button
             class="ml-10"
             icon="icon-coinCity_heading_ite"
             variant="primary"
             size="sm"
-          >button text</n-button>
+            >button text</n-button
+          >
           <n-button
             class="ml-2"
             icon="icon-otc_body_icon_sele"
             variant="secondary"
             size="sm"
-          >次要按钮</n-button>
+            >次要按钮</n-button
+          >
           <n-button
             class="ml-2"
             icon="icon-coinCity_location"
             iconType="before"
             variant="tertiary"
             size="sm"
-          >第三按钮</n-button>
+            >第三按钮</n-button
+          >
           <n-button
             class="ml-10"
             icon="icon-otc_body_icon_sele"
             variant="success"
             size="base"
-          >button text</n-button>
+            >button text</n-button
+          >
           <n-button
             class="ml-10"
             icon="icon-Exchange_trading_switch"
             variant="warning"
             size="lg"
-          >button text</n-button>
+            >button text</n-button
+          >
           <n-button
             class="ml-10"
             :loading="true"
@@ -143,28 +112,37 @@
             iconType="before"
             variant="danger"
             size="xl"
-          >button text</n-button>
+            >button text</n-button
+          >
         </div>
       </div>
       <div class="mt-10">
         <div class="text-center">
           <p>图标</p>
         </div>
-        <n-icon
-          class="iconjiazaizhong"
-          :loading="true"
-          size="xl"
-        ></n-icon>
+        <n-icon class="iconjiazaizhong" :loading="true" size="xl"></n-icon>
       </div>
       <div class="mt-10">
         <div class="text-center">
           <p>基础列表</p>
         </div>
         <!-- data border show-header stripe height max-height @click-column @click-row @click-header-->
-        <n-table :data="tableData" :border="true" :stripe="true" @click-column="onClickColumn" @click-row="onClickRow" @click-header="onClickHeader">
+        <n-table
+          :data="tableData"
+          :border="true"
+          :stripe="true"
+          @click-column="onClickColumn"
+          @click-row="onClickRow"
+          @click-header="onClickHeader"
+        >
           <n-table-column lable="第一列" prop="a">
+            <template slot="lable">
+              <n-button icon="icon-iconjiazai" iconType="before" size="xs">
+                button text
+              </n-button>
+            </template>
             <template slot-scope="scope">
-              {{scope.row.a}}
+              {{ scope.row.a }}
             </template>
           </n-table-column>
           <n-table-column lable="第二列" prop="b"></n-table-column>
@@ -173,143 +151,23 @@
             footer
           </template>
         </n-table>
-
-  <!-- <div class="container"> -->
-  <!-- class="w-screen h-screen" -->
-  <div>
-    <!-- <div class="m-auto" style="width: 600px;height: 400px;">
-      <n-container>
-        <n-header class="text-center bg-gray-600">
-          布局容器一
-        </n-header>
-        <n-container>
-          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
-          <n-container>
-            <n-main class="bg-gray-400">内容</n-main>
-            <n-footer class="bg-gray-600">底部</n-footer>
-          </n-container>
-        </n-container>
-      </n-container>
-    </div>
-    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
-      <n-container>
-        <n-header class="text-center bg-gray-600">
-          布局容器二
-        </n-header>
-        <n-container>
-          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
-          <n-container>
-            <n-main class="bg-gray-400">内容</n-main>
-          </n-container>
-        </n-container>
-      </n-container>
-    </div>
-    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
-      <n-container>
-        <n-header class="text-center bg-gray-600">
-          布局容器三
-        </n-header>
-        <n-container>
-          <n-main class="bg-gray-400">内容</n-main>
-          <n-footer class="bg-gray-600">底部</n-footer>
-        </n-container>
-      </n-container>
-    </div>
-    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
-      <n-container>
-        <n-aside class="w-64 bg-gray-500">布局容器四</n-aside>
-        <n-main class="bg-gray-400">内容</n-main>
-      </n-container>
-    </div>
-    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
-      <n-container>
-        <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
-        <n-container>
-          <n-header class="text-center bg-gray-600">
-            布局容器五
-          </n-header>
-          <n-container>
-            <n-main class="bg-gray-400">内容</n-main>
-            <n-footer class="bg-gray-600">底部</n-footer>
-          </n-container>
-        </n-container>
-      </n-container>
-    </div> -->
-    <div class="tc">
-      <div class="m-auto" style="width: 400px">
-        成功：
-        <!-- :status="newStatus" -->
-        <!-- <n-input
-          status="success"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        /> -->
       </div>
-      <!-- <div class="m-auto" style="width: 400px">
-        警告：
-        <n-input
-          status="warning"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        />
-      </div>
-      <div class="m-auto" style="width: 400px">
-        失败：
-        <n-input
-          status="error"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        />
-      </div> -->
-      <div class="m-auto" style="width: 400px">
-        <!-- <n-input
-          size="xs"
-          :disabled="newDisabled"
-          icon="n-icon-search"
-          iconType="before"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        />
-        <n-input
-          size="sm"
-          :disabled="newDisabled"
-          icon="n-icon-search"
-          iconType="before"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        />
-        <n-input
-          size="base"
-          :disabled="newDisabled"
-          icon="n-icon-search"
-          iconType="before"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        /><n-input
-          size="lg"
-          :disabled="newDisabled"
-          icon="n-icon-search"
-          iconType="before"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-        /> -->
-        <n-input
-          size="xl"
-          :disabled="newDisabled"
-          icon="n-icon-clean"
-          v-model="inputValue"
-          @change="onChange"
-          @input="onInput"
-          clearable
-        />
-        <p @click="clearAAA">点击清空</p>
+      <div class="tc">
+        <div class="m-auto" style="width: 400px">
+          成功：
+        </div>
+        <div class="m-auto" style="width: 400px">
+          <n-input
+            size="xl"
+            :disabled="newDisabled"
+            icon="n-icon-clean"
+            v-model="inputValue"
+            @change="onChange"
+            @input="onInput"
+            clearable
+          />
+          <p @click="clearAAA">点击清空</p>
+        </div>
       </div>
     </div>
   </div>
@@ -330,9 +188,15 @@ export default {
     NTableColumn,
     NIcon
   },
-  data () {
+  data() {
     return {
-      tableData:[{a:1,b:2,c:3},{a:2,b:3,c:4},{a:3,b:4,c:5},{a:2,b:3,c:4},{a:3,b:4,c:5}],
+      tableData: [
+        { a: 1, b: 2, c: 3 },
+        { a: 2, b: 3, c: 4 },
+        { a: 3, b: 4, c: 5 },
+        { a: 2, b: 3, c: 4 },
+        { a: 3, b: 4, c: 5 }
+      ],
       text: {
         value: null,
         disabled: null,
@@ -341,26 +205,19 @@ export default {
       }
     };
   },
-  mounted () {
+  mounted() {
     console.log(this.comId);
   },
-  methods:{
-    onClickRow(data){
-      console.log("row",data)
-    },
-    onClickHeader($event,data){
-      console.log("header",$event,data)
-      },
-    onClickColumn(data){
-      console.log("column",data)
-      },
-      inputValue: "",
-      newDisabled: false,
-      newStatus: "" //error warning success
-    };
-  },
-  mounted() {},
   methods: {
+    onClickRow(data) {
+      console.log("row", data);
+    },
+    onClickHeader($event, data) {
+      console.log("header", $event, data);
+    },
+    onClickColumn(data) {
+      console.log("column", data);
+    },
     clearAAA() {
       this.inputValue = "";
     },
@@ -404,8 +261,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
