@@ -3,127 +3,6 @@
     <div class="mb-20">
       <div class="mt-10">
         <div class="text-center">
-          <p>基本按钮组</p>
-          <p>basic buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" size="xs">button text</n-button>
-          <n-button class="ml-10" variant="primary" size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-2" variant="secondary" size="sm"
-            >次要按钮</n-button
-          >
-          <n-button class="ml-2" variant="tertiary" size="sm"
-            >第三按钮</n-button
-          >
-          <n-button class="ml-10" variant="success" size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>禁用按钮组</p>
-          <p>Disabled buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button class="ml-10" disabled size="xs">button text</n-button>
-          <n-button class="ml-10" variant="primary" disabled size="sm"
-            >button text</n-button
-          >
-          <n-button class="ml-2" variant="secondary" disabled size="sm"
-            >次要按钮</n-button
-          >
-          <n-button class="ml-2" variant="tertiary" disabled size="sm"
-            >第三按钮</n-button
-          >
-          <n-button class="ml-10" variant="success" disabled size="base"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="warning" disabled size="lg"
-            >button text</n-button
-          >
-          <n-button class="ml-10" variant="danger" disabled size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>图标按钮组</p>
-          <p>Disabled buttons</p>
-        </div>
-        <div class="mt-2">
-          <n-button
-            icon="icon-iconjiazai"
-            iconType="before"
-            class="ml-10"
-            disabled
-            size="xs"
-            >button text</n-button
-          >
-          <n-button
-            class="ml-10"
-            icon="icon-coinCity_heading_ite"
-            variant="primary"
-            size="sm"
-            >button text</n-button
-          >
-          <n-button
-            class="ml-2"
-            icon="icon-otc_body_icon_sele"
-            variant="secondary"
-            size="sm"
-            >次要按钮</n-button
-          >
-          <n-button
-            class="ml-2"
-            icon="icon-coinCity_location"
-            iconType="before"
-            variant="tertiary"
-            size="sm"
-            >第三按钮</n-button
-          >
-          <n-button
-            class="ml-10"
-            icon="icon-otc_body_icon_sele"
-            variant="success"
-            size="base"
-            >button text</n-button
-          >
-          <n-button
-            class="ml-10"
-            icon="icon-Exchange_trading_switch"
-            variant="warning"
-            size="lg"
-            >button text</n-button
-          >
-          <n-button
-            class="ml-10"
-            :loading="true"
-            icon="iconsuanli_icon_kline"
-            iconType="before"
-            variant="danger"
-            size="xl"
-            >button text</n-button
-          >
-        </div>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
-          <p>图标</p>
-        </div>
-        <n-icon class="iconjiazaizhong" :loading="true" size="xl"></n-icon>
-      </div>
-      <div class="mt-10">
-        <div class="text-center">
           <p>基础列表</p>
         </div>
         <!-- data border show-header stripe height max-height @click-column @click-row @click-header-->
@@ -131,29 +10,12 @@
           :data="tableData"
           :border="true"
           :stripe="true"
-          hover-color="bg-blue-400"
-          stripe-color="bg-blue-200"
           @click-column="onClickColumn"
           @click-row="onClickRow"
           @click-header="onClickHeader"
         >
           <n-table-column lable="第一列">
-            <template slot="lable">
-              <n-button icon="icon-iconjiazai" iconType="before" size="lg">
-                button text
-              </n-button>
-            </template>
-            <template slot-scope="scope">
-              <n-button
-                icon="icon-iconjiazai"
-                variant="danger"
-                iconType="before"
-                size="sm"
-                @click.stop="testButton(scope.row)"
-              >
-                button {{ scope.row.a }}
-              </n-button>
-            </template>
+            <template slot-scope="scope">{{ scope.row.a }} </template>
           </n-table-column>
           <n-table-column lable="第二列" prop="b"></n-table-column>
           <n-table-column lable="第三列" prop="c"></n-table-column>
@@ -161,23 +23,6 @@
             footer
           </template>
         </n-table>
-      </div>
-      <div class="tc">
-        <div class="m-auto" style="width: 400px">
-          成功：
-        </div>
-        <div class="m-auto" style="width: 400px">
-          <n-input
-            size="xl"
-            :disabled="newDisabled"
-            icon="n-icon-clean"
-            v-model="inputValue"
-            @change="onChange"
-            @input="onInput"
-            clearable
-          />
-          <p @click="clearAAA">点击清空</p>
-        </div>
       </div>
     </div>
   </div>

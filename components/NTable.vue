@@ -5,7 +5,7 @@
 <script>
 import NTableColumn from "~/components/NTableColumn"; //引入tablecolumn
 import defaultClass from "../plugins/themes/default/NTable"; //引入table样式
-const NTABLECOLUMN = "vue-component-15-NTableColumn"; //tag:vue-component-15-NTableColumn
+const NTABLECOLUMN = "NTableColumn"; //tag:vue-component-15-NTableColumn
 const TAGNTABLECOLUMN = "n-table-column"; //tag:n-table-column
 const TAGP = "p";
 const TAGTABLE = "table";
@@ -41,13 +41,13 @@ export default {
     height: {
       type: String,
       default: () => {
-        return "normal";
+        return "200px";
       }
     }, //高度
     maxHeight: {
       type: String,
       default: () => {
-        return "normal";
+        return "200px";
       }
     }, //最高 高度
     hoverColor: { type: String, default: "bg-gray-200" }, //选中颜色
@@ -161,7 +161,6 @@ export default {
       let NTableColumnList = this.getNTableColumn();
       let renderThList = [];
       NTableColumnList.map(item => {
-        // console.log(item.componentOptions.children);
         let lable = this.getHeaderLable(item); //获取 template slot label
         renderThList.push(
           createElement(
@@ -299,7 +298,7 @@ export default {
      */
     getNTableColumn() {
       return this.$slots.default.filter(item => {
-        if (item.tag === NTABLECOLUMN) {
+        if (item.tag ? item.tag.indexOf(NTABLECOLUMN) : false) {
           return item;
         }
       });
@@ -317,17 +316,10 @@ export default {
   },
   watch: {},
   render: function(createElement) {
-    return createElement(
-      TAGDIV,
-      {
-        style: {
-          height: this.height,
-          overflow: "auto",
-          "max-height": this["max-height"]
-        }
-      },
-      [this.createTable(createElement), this.createFooter(createElement)]
-    );
+    return createElement(TAGDIV, [
+      this.createTable(createElement),
+      this.createFooter(createElement)
+    ]);
   }
 };
 </script>
