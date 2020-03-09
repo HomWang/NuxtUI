@@ -63,8 +63,12 @@
 
         render: function (createElement) {
             return createElement(
-                "input",
+                "label",
                 {
+                    attr: {
+                        role: 'radio',
+
+                    },
                     class: this.currentClass,
                 },
                 this.$slots.default
