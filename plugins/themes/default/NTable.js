@@ -1,6 +1,6 @@
 const NTable = {
-    baseTableClass: "border-collapse border-gray-500",
-    baseHeaderClass: "border-gray-400 text-gray-800",
+    baseTableClass: "border-collapse",
+    baseHeaderClass: "text-gray-800",
     baseBodyClass: "border-gray-400",
     mediumClass: "px-4 py-2",
     smallClass: "px-3 py-1",

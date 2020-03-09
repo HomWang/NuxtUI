@@ -139,7 +139,7 @@
         >
           <n-table-column lable="第一列">
             <template slot="lable">
-              <n-button icon="icon-iconjiazai" iconType="before" size="sm">
+              <n-button icon="icon-iconjiazai" iconType="before" size="lg">
                 button text
               </n-button>
             </template>
