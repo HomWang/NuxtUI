@@ -173,6 +173,143 @@
             footer
           </template>
         </n-table>
+
+  <!-- <div class="container"> -->
+  <!-- class="w-screen h-screen" -->
+  <div>
+    <!-- <div class="m-auto" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器一
+        </n-header>
+        <n-container>
+          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+            <n-footer class="bg-gray-600">底部</n-footer>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器二
+        </n-header>
+        <n-container>
+          <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-header class="text-center bg-gray-600">
+          布局容器三
+        </n-header>
+        <n-container>
+          <n-main class="bg-gray-400">内容</n-main>
+          <n-footer class="bg-gray-600">底部</n-footer>
+        </n-container>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-aside class="w-64 bg-gray-500">布局容器四</n-aside>
+        <n-main class="bg-gray-400">内容</n-main>
+      </n-container>
+    </div>
+    <div class="m-auto pt-10" style="width: 600px;height: 400px;">
+      <n-container>
+        <n-aside class="w-64 bg-gray-500">侧边栏</n-aside>
+        <n-container>
+          <n-header class="text-center bg-gray-600">
+            布局容器五
+          </n-header>
+          <n-container>
+            <n-main class="bg-gray-400">内容</n-main>
+            <n-footer class="bg-gray-600">底部</n-footer>
+          </n-container>
+        </n-container>
+      </n-container>
+    </div> -->
+    <div class="tc">
+      <div class="m-auto" style="width: 400px">
+        成功：
+        <!-- :status="newStatus" -->
+        <!-- <n-input
+          status="success"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        /> -->
+      </div>
+      <!-- <div class="m-auto" style="width: 400px">
+        警告：
+        <n-input
+          status="warning"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div>
+      <div class="m-auto" style="width: 400px">
+        失败：
+        <n-input
+          status="error"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div> -->
+      <div class="m-auto" style="width: 400px">
+        <!-- <n-input
+          size="xs"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="sm"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="base"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        /><n-input
+          size="lg"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        /> -->
+        <n-input
+          size="xl"
+          :disabled="newDisabled"
+          icon="n-icon-clean"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+          clearable
+        />
+        <p @click="clearAAA">点击清空</p>
       </div>
     </div>
   </div>
@@ -217,6 +354,36 @@ export default {
     onClickColumn(data){
       console.log("column",data)
       },
+      inputValue: "",
+      newDisabled: false,
+      newStatus: "" //error warning success
+    };
+  },
+  mounted() {},
+  methods: {
+    clearAAA() {
+      this.inputValue = "";
+    },
+    onChange(val) {
+      console.log("获取到改变后的值:", val, this.inputValue);
+    },
+    onInput(val) {
+      this.inputValue = val;
+      console.log("传出来的值：", val, "监听到的值", this.inputValue);
+      if (val == 1) {
+        this.newStatus = "success";
+      } else if (val == 2) {
+        this.newStatus = "warning";
+      } else if (val == 3) {
+        this.newStatus = "error";
+      } else {
+        this.newStatus = "";
+      }
+      console.log("获取正在输入的值:", val);
+    },
+    clickInput(e) {
+      // console.log(e);
+    }
   }
 };
 </script>
