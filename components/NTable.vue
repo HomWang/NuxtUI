@@ -50,8 +50,9 @@ export default {
         return "200px";
       }
     }, //最高 高度
-    hoverColor: { type: String, default: "bg-gray-200" }, //选中颜色
-    stripeColor: { type: String, default: "bg-gray-100" }, //条纹颜色
+    headerColor: { type: String, default: defaultClass.headerColor },
+    hoverColor: { type: String, default: defaultClass.hoverColor }, //选中颜色
+    stripeColor: { type: String, default: defaultClass.stripeColor }, //条纹颜色
     stripe: { type: Boolean, default: false }, //是否条纹
     border: { type: Boolean, default: false }, //是否border
     size: { type: String, default: "medium" }, //medium / small / mini
@@ -102,6 +103,7 @@ export default {
         className += " " + defaultClass.border;
       }
       className += " " + this.getSize;
+      className += " " + this.headerColor;
       className += " " + defaultClass.baseHeaderClass;
       return className;
     },
@@ -138,10 +140,10 @@ export default {
       this.$emit(EVENTCLICKCOLUMN, e);
     },
     /**
-     * td 点击
+     * header 点击
      */
     onClickHeader(e) {
-      let data = this.getColumnData(e.data.attrs.prop);
+      let data = this.getColumnData(e.componentOptions.propsData.prop);
       this.$emit(EVENTCLICKHEADER, e, data);
     },
     /**
@@ -173,7 +175,7 @@ export default {
                 }
               }
             },
-            lable ? lable.children : item.data.attrs.lable
+            lable ? lable.children : item.componentOptions.propsData.lable
           )
         );
       });
@@ -227,6 +229,11 @@ export default {
             [
               NTableColumnList.map(item => {
                 let data = item.data;
+                data.attrs = Object.assign(
+                  data.attrs,
+                  row,
+                  item.componentOptions.propsData
+                );
                 return createElement(
                   TAGTD,
                   {
@@ -239,14 +246,7 @@ export default {
                       }
                     }
                   },
-                  [
-                    data.scopedSlots
-                      ? data.scopedSlots.default(row)
-                      : createElement(
-                          TAGNTABLECOLUMN,
-                          this.data[i][item.data.attrs.prop]
-                        )
-                  ]
+                  [createElement(TAGNTABLECOLUMN, data)]
                 );
               })
             ]

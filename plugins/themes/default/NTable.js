@@ -13,6 +13,9 @@ const NTable = {
     borderGray500: 'border-gray-500',
     borderGray400: 'border-gray-400',
     backgroundGray500: 'bg-gray-100',
+    stripeColor: 'bg-gray-100',
+    hoverColor: 'bg-gray-200',
+    headerColor: 'bg-transparent',
     widthFull: 'w-full'
 }
 
