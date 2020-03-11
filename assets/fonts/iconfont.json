@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8675195",
+      "name": "下拉",
+      "font_class": "n-icon-dropdown",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "13358574",
+      "name": "n-icon-notice_one",
+      "font_class": "n-icon-notice_one",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
       "icon_id": "7674873",
       "name": "关闭",
       "font_class": "n-icon-guanbi",

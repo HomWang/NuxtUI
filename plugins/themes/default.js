@@ -17,22 +17,22 @@
 
 import NButton from './default/NButton'
 import NIcon from './default/NIcon'
+import NGrid from "./default/NGrid"
+import NFlex from "./default/NFlex"
+import NInput from "./default/NInput"
+import NContainer from "./default/NContainer"
+import NHeader from "./default/NHeader"
+import NAside from "./default/NAside"
+import NMain from "./default/NMain"
+import NFooter from "./default/NFooter"
 import NTable from './default/NTable'
-import NTableColumn from './default/NTableColumn'
-import NGrid from "./components/NGrid"
-import NFlex from "./components/NFlex"
-import NInput from "./components/NInput"
-import NContainer from "./components/NContainer"
-import NHeader from "./components/NHeader"
-import NAside from "./components/NAside"
-import NMain from "./components/NMain"
-import NFooter from "./components/NFooter"
+import NSelect from './default/NSelect'
 
 const DefaultTheme = {
   NButton,
   NIcon,
   NTable,
-  NTableColumn,
+  NSelect,
   NGrid,
   NFlex,
   NInput,
@@ -47,7 +47,7 @@ export {
   NButton,
   NIcon,
   NTable,
-  NTableColumn,
+  NSelect,
   NGrid,
   NFlex,
   NInput,

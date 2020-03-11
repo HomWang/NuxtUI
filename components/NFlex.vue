@@ -17,7 +17,7 @@ export default {
     },
     flex: {
       type: [Number, String],
-      default: "none"
+      default: ""
     },
     // row(行从开头开始) row-reverse(行从结尾开始) col(列从开头开始) col-reverse(列从结尾开始)
     direction: {
@@ -71,8 +71,9 @@ export default {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
-        `flex-${this.flex}`,
-        this.baseClass
+        this.flex
+          ? `flex-${this.flex} ${this.flex === "wrap" ? "flex" : ""}`
+          : this.baseClass
       ];
 
       if (this.direction) {

@@ -1,5 +1,5 @@
-const NAside = {
+const NMain = {
   baseClass: "flex-1 w-full text-center",
 };
 
-export default NAside;
+export default NMain;

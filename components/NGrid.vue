@@ -17,19 +17,19 @@ export default {
     },
     // 响应式列展示个数
     sm: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     md: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     lg: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     xl: {
-      type: Number,
+      type: [String, Number],
       default: 0
     },
     // 几行
@@ -91,6 +91,16 @@ export default {
     colFlow: {
       type: Boolean,
       default: false
+    },
+    // 行对齐方式 start(开头) center(居中) end(结尾)
+    items: {
+      type: String,
+      default: ""
+    },
+    // 内容列对齐方式 left(左边) center(中间) right(右边)
+    text: {
+      type: String,
+      default: ""
     }
   },
   computed: {
@@ -124,6 +134,14 @@ export default {
         sizeClass,
         this.baseClass
       ];
+
+      if (this.text) {
+        classes.push(`text-${this.text}`);
+      }
+
+      if (this.items) {
+        classes.push(`items-${this.items}`);
+      }
 
       if (this.row !== "none" && this.row > 0 && this.row < 13) {
         classes.push(`${newSize}grid-rows-${this.row}`);

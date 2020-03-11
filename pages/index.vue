@@ -1,103 +1,195 @@
 <template>
-  <div class="container">
-    <div class="mb-20">
-      <div class="mt-10">
-        <div class="text-center">
-          <p>基础列表</p>
-        </div>
-        <!-- data border show-header stripe height max-height @click-column @click-row @click-header-->
-        <n-table
-          :data="tableData"
-          :border="true"
-          :stripe="true"
-          @click-column="onClickColumn"
-          @click-row="onClickRow"
-          @click-header="onClickHeader"
-        >
-          <n-table-column lable="第一列">
-            <template slot-scope="scope">{{ scope.row.a }} </template>
-          </n-table-column>
-          <n-table-column lable="第二列" prop="b"></n-table-column>
-          <n-table-column lable="第三列" prop="c"></n-table-column>
-          <template slot="footer">
-            footer
-          </template>
-        </n-table>
+  <!-- <div class="container"> -->
+  <!-- class="w-screen h-screen" -->
+  <div>
+    <div class="tc">
+      <!-- <div
+        class="m-auto"
+        style="width: 400px"
+      >
+        成功：
+        <n-input
+          status="success"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div>
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
+        警告：
+        <n-input
+          status="warning"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div>
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
+        失败：
+        <n-input
+          status="error"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+      </div>
+      <div
+        class="m-auto"
+        style="width: 400px"
+      >
+        <n-input
+          size="xs"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="sm"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="base"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="lg"
+          :disabled="newDisabled"
+          icon="n-icon-search"
+          iconType="before"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+        />
+        <n-input
+          size="xl"
+          :disabled="newDisabled"
+          v-model="inputValue"
+          @change="onChange"
+          @input="onInput"
+          clearable
+        />
+        <p @click="clearAAA">点击清空</p>
+      </div> -->
+      <div
+        class="m-auto pt-10"
+        style="width: 400px"
+      >
+        <!-- :format="['lable', 'value']" -->
+        <n-select
+          @change="newChange"
+          :data="newData"
+          :format="{lable: 'lable1', value: 'value1'}"
+          placeholder="请选择你的名字"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NButton from "~/components/NButton";
-import NIcon from "~/components/NIcon";
-import NTable from "~/components/NTable";
-import NTableColumn from "~/components/NTableColumn";
-import Logo from "~/components/Logo.vue";
+// import NCheckbox from "~/components/NCheckbox";
+// import NGrid from "~/components/NGrid";
+// import NFlex from "~/components/NFlex";
+// import NContainer from "~/components/NContainer";
+// import NHeader from "~/components/NHeader";
+// import NAside from "~/components/NAside";
+// import NMain from "~/components/NMain";
+// import NFooter from "~/components/NFooter";
+// import NInput from "~/components/NInput";
+import NSelect from "~/components/NSelect";
 
 export default {
   components: {
-    Logo,
-    NButton,
-    NTable,
-    NTableColumn,
-    NIcon
+    // NCheckbox
+    // NGrid,
+    // NFlex,
+    // NContainer,
+    // NHeader,
+    // NAside,
+    // NMain,
+    // NFooter
+    // NInput
+    NSelect
   },
-  data() {
+  data () {
     return {
-      tableData: [
-        { a: 1, b: 2, c: 3 },
-        { a: 2, b: 3, c: 4 },
-        { a: 3, b: 4, c: 5 },
-        { a: 2, b: 3, c: 4 },
-        { a: 3, b: 4, c: 5 }
-      ],
-      text: {
-        value: null,
-        disabled: null,
-        id: "text-field",
-        name: "text-field"
-      }
+      newData: [
+        {
+          id: 1,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 2,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 3,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 4,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 5,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 6,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 7,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 8,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 9,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 10,
+          lable1: "王弘",
+          value1: 28,
+        }
+      ]
     };
   },
-  mounted() {
-    console.log(this.comId);
-  },
+  mounted () { },
   methods: {
-    onClickRow(data) {
-      console.log("row", data);
-    },
-    onClickHeader($event, data) {
-      console.log("header", $event, data);
-    },
-    onClickColumn(data) {
-      console.log("column", data);
-    },
-    testButton(data) {
-      console.log("button", data);
-    },
-    clearAAA() {
-      this.inputValue = "";
-    },
-    onChange(val) {
-      console.log("获取到改变后的值:", val, this.inputValue);
-    },
-    onInput(val) {
-      this.inputValue = val;
-      console.log("传出来的值：", val, "监听到的值", this.inputValue);
-      if (val == 1) {
-        this.newStatus = "success";
-      } else if (val == 2) {
-        this.newStatus = "warning";
-      } else if (val == 3) {
-        this.newStatus = "error";
-      } else {
-        this.newStatus = "";
-      }
-      console.log("获取正在输入的值:", val);
-    },
-    clickInput(e) {
-      // console.log(e);
+    newChange (val) {
+      console.log(val)
     }
   }
 };
@@ -119,8 +211,8 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;

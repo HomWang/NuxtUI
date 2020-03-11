@@ -3,6 +3,7 @@ import NInputTheme from "../plugins/themes/default/NInput";
 
 const {
   baseClass,
+  hoverClass,
   divClass,
   iconClass,
   clearableClass,
@@ -31,7 +32,7 @@ const {
 export default {
   name: "NInput",
 
-  install(Vue, theme) {
+  install (Vue, theme) {
     selfInstall(Vue, theme, this);
   },
 
@@ -49,7 +50,7 @@ export default {
     size: {
       type: String,
       default: "sm",
-      validator: function(value) {
+      validator: function (value) {
         return (
           value === null ||
           ["xs", "sm", "base", "lg", "xl"].indexOf(value) !== -1
@@ -75,6 +76,7 @@ export default {
       type: Boolean,
       default: false
     },
+    // 带有必填字段的表单
     required: {
       type: Boolean,
       default: false
@@ -109,14 +111,17 @@ export default {
       type: [String, Number],
       default: null
     },
+    // 可接受多个值的文件上传字段
     multiple: {
       type: Boolean,
       default: false
     },
+    // 只读
     readonly: {
       type: Boolean,
       default: undefined
     },
+    // 规定用于验证输入字段的模式
     pattern: {
       type: String,
       default: null
@@ -139,6 +144,10 @@ export default {
     baseClass: {
       type: [String, Object, Array],
       default: baseClass
+    },
+    hoverClass: {
+      type: [String, Object, Array],
+      default: hoverClass
     },
     divClass: {
       type: [String, Object, Array],
@@ -234,15 +243,14 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       currentValue: this.value
     };
   },
 
   watch: {
-    value(value) {
-      console.log("监听的value值：", value);
+    value (value) {
       if (!value) {
         this.$el.children[0].value = "";
       }
@@ -256,11 +264,12 @@ export default {
      * 输入框的默认类
      * @return {Array}
      */
-    currentClass() {
+    currentClass () {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
-        this.baseClass
+        this.baseClass,
+        this.hoverClass
       ];
 
       if (this.disabled) {
@@ -382,7 +391,7 @@ export default {
      * icon的默认类
      * @return {Array}
      */
-    iconCurrentClass() {
+    iconCurrentClass () {
       let classes = [this.iconClass, this.icon];
 
       // 判断之后
@@ -416,8 +425,9 @@ export default {
           break;
       }
 
-      if (this.clearable) {
+      if (this.clearable && this.currentValue) {
         classes.push(this.clearableClass);
+        classes.push("n-icon-clean");
       }
 
       switch (this.status) {
@@ -436,33 +446,35 @@ export default {
   },
 
   methods: {
-    onBlur(e) {
+    onBlur (e) {
       this.$emit("blur", e);
     },
 
-    onFocus(e) {
+    onFocus (e) {
       this.$emit("focus", e);
     },
 
-    onInput(e) {
+    onInput (e) {
       this.$emit("input", e.target.value);
     },
 
-    onChange(e) {
+    onChange (e) {
       if (this.currentValue !== e.target.value) {
         this.$emit("change", e.target.value);
       }
     },
 
     // 清除input的值
-    onClearable() {
-      this.$emit("input", "");
-      this.$emit("change", "");
-      this.$emit("clear");
-      this.currentValue = "";
+    onClearable () {
+      if (this.clearable) {
+        this.$emit("input", "");
+        this.$emit("change", "");
+        this.$emit("clear");
+        this.currentValue = "";
+      }
     },
 
-    getAttributes() {
+    getAttributes () {
       return {
         id: this.id,
         type: this.type,
@@ -483,13 +495,13 @@ export default {
       };
     },
 
-    getIconAttributes() {
+    getIconAttributes () {
       return {
         id: this.id
       };
     },
 
-    getDivAttributes() {
+    getDivAttributes () {
       return {
         id: this.id
       };
@@ -500,7 +512,7 @@ export default {
      * 渲染Input组件
      * @return {String}
      */
-    inputToRender(createElement) {
+    inputToRender (createElement) {
       return createElement(
         "input",
         {
@@ -522,7 +534,7 @@ export default {
      * 根据Input的状态渲染的Icon组件
      * @return {String}
      */
-    iconToRender(createElement) {
+    iconToRender (createElement) {
       let [...newIconCurrentClass] = this.iconCurrentClass;
       return this.$createElement(
         "i",
@@ -539,7 +551,7 @@ export default {
     }
   },
 
-  render: function(createElement) {
+  render: function (createElement) {
     return createElement(
       "div",
       {

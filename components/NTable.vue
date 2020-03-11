@@ -1,7 +1,3 @@
-<!-->
-    table 列表
-    //tag:vue-component-15-NTableColumn
-<!-->
 <script>
 import NTableColumn from "~/components/NTableColumn"; //引入tablecolumn
 import defaultClass from "../plugins/themes/default/NTable"; //引入table样式
