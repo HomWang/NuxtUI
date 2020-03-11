@@ -23,6 +23,10 @@
                 <n-input size="xl" :disabled="newDisabled" v-model="inputValue" @change="onChange" @input="onInput" clearable/>
                 <p @click="clearAAA">点击清空</p>
                 <n-button size="xs">测试</n-button>
+                <n-radio label="1" v-model="radio"></n-radio>
+                <n-radio label="2" v-model="radio"></n-radio>
+                <n-radio label="3" v-model="radio"></n-radio>
+                <n-radio label="4" v-model="radio"></n-radio>
             </div>
         </div>
     </div>
@@ -39,6 +43,7 @@
     // import NFooter from "~/components/NFooter";
     import NInput from "~/components/NInput";
     import NButton from "~/components/NButton";
+    import NRadio from "~/components/NRadio";
 
     export default {
         components: {
@@ -52,19 +57,22 @@
             // NFooter
             NInput,
             NButton,
+            NRadio
         },
         data() {
             return {
                 inputValue: "",
                 newDisabled: false,
-                newStatus: "" //error warning success
+                newStatus: "", //error warning success
+                radio: '1',
             };
         },
         mounted() {
+
         },
         methods: {
             clearAAA() {
-                this.inputValue = "";
+                console.log(this.radio);
             },
             onChange(val) {
                 console.log("获取到改变后的值:", val, this.inputValue);

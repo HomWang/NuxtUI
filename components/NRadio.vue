@@ -22,23 +22,35 @@
                 type: [String, Object, Array],
                 default: defaultSizeClass
             },
+            isDisabled: {
+                type: Boolean,
+                default : false
+            },
+            border: {
+                type: Boolean,
+                default : false
+            },
+            label: {
+                type: [String, Number, Boolean]
+            },
+            value: {
+                type: [String, Number, Boolean]
+            }
         },
 
         computed: {
-            /**
-             * The default classes for the radio
-             * 单选框的默认类
-             * @return {Array}
-             */
-            currentClass() {
-                let classes = [
-                    `${this.$options._componentTag}`,
-                    this.baseClass
-                ];
-
-                return classes
-            }
+            model: {
+                get() {
+                    return this.value;
+                },
+                set(val) {
+                    // 改变 this.value的值
+                    console.log(val);
+                    this.$emit('input', val);
+                }
+            },
         },
+
         methods: {
             onBlur(e) {
                 this.$emit("blur", e);
@@ -65,13 +77,62 @@
             return createElement(
                 "label",
                 {
-                    attr: {
+                    attrs: {
                         role: 'radio',
-
                     },
-                    class: this.currentClass,
+                    class: [
+                        { 'is-disabled': this.isDisabled },
+                        { 'is-bordered': this.border },
+                    ],
                 },
-                this.$slots.default
+                [createElement(
+                    "span",
+                    {
+                        class: [
+                            'n-radio__input',
+                        ],
+                    },
+                    [createElement(
+                        "span",
+                        {
+                            class: [
+                                'n-radio__inner',
+                            ],
+                        },
+
+                    ),
+                    createElement(
+                        "input",
+                        {
+                            attrs: {
+                                ref: "radio",
+                                value: this.label,
+                                type: 'radio',
+                                checked : this.model === this.label,
+                            },
+                            class: [
+                                'n-radio__original',
+                            ],
+                            on: {
+                                input: (e)=>{
+                                    this.model = e.target.value;
+                                    console.log(e.target.value);
+                                    console.log(this.model);
+                                },
+                            },
+                        },
+
+                    )]
+                ),
+                createElement(
+                    "span",
+                    {
+                        class: [
+                            'n-radio__label',
+                        ],
+                    },
+                    [this.$slots.default ? this.$slots.default : this.label]
+                )],
             )
         }
 
