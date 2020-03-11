@@ -3,8 +3,7 @@
   <!-- class="w-screen h-screen" -->
   <div>
     <div class="tc">
-
-      <div
+      <!-- <div
         class="m-auto"
         style="width: 400px"
       >
@@ -89,6 +88,18 @@
           clearable
         />
         <p @click="clearAAA">点击清空</p>
+      </div> -->
+      <div
+        class="m-auto pt-10"
+        style="width: 400px"
+      >
+        <!-- :format="['lable', 'value']" -->
+        <n-select
+          @change="newChange"
+          :data="newData"
+          :format="{lable: 'lable1', value: 'value1'}"
+          placeholder="请选择你的名字"
+        />
       </div>
     </div>
   </div>
@@ -97,57 +108,88 @@
 <script>
 // import NCheckbox from "~/components/NCheckbox";
 // import NGrid from "~/components/NGrid";
-import NFlex from "~/components/NFlex";
+// import NFlex from "~/components/NFlex";
 // import NContainer from "~/components/NContainer";
 // import NHeader from "~/components/NHeader";
 // import NAside from "~/components/NAside";
 // import NMain from "~/components/NMain";
 // import NFooter from "~/components/NFooter";
-import NInput from "~/components/NInput";
+// import NInput from "~/components/NInput";
+import NSelect from "~/components/NSelect";
 
 export default {
   components: {
     // NCheckbox
-    // NGrid
-    NFlex,
+    // NGrid,
+    // NFlex,
     // NContainer,
     // NHeader,
     // NAside,
     // NMain,
     // NFooter
-    NInput
+    // NInput
+    NSelect
   },
   data () {
     return {
-      inputValue: "",
-      newDisabled: false,
-      newStatus: "" //error warning success
+      newData: [
+        {
+          id: 1,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 2,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 3,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 4,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 5,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 6,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 7,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 8,
+          lable1: "王弘",
+          value1: 28,
+        },
+        {
+          id: 9,
+          lable1: "郭芳",
+          value1: 29,
+        },
+        {
+          id: 10,
+          lable1: "王弘",
+          value1: 28,
+        }
+      ]
     };
   },
   mounted () { },
   methods: {
-    clearAAA () {
-      this.inputValue = "";
-    },
-    onChange (val) {
-      console.log("获取到改变后的值:", val, this.inputValue);
-    },
-    onInput (val) {
-      this.inputValue = val;
-      console.log("传出来的值：", val, "监听到的值", this.inputValue);
-      if (val == 1) {
-        this.newStatus = "success";
-      } else if (val == 2) {
-        this.newStatus = "warning";
-      } else if (val == 3) {
-        this.newStatus = "error";
-      } else {
-        this.newStatus = "";
-      }
-      console.log("获取正在输入的值:", val);
-    },
-    clickInput (e) {
-      // console.log(e);
+    newChange (val) {
+      console.log(val)
     }
   }
 };

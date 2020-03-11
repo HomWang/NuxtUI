@@ -71,7 +71,9 @@ export default {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
-        this.flex ? `flex-${this.flex}` : this.baseClass
+        this.flex
+          ? `flex-${this.flex} ${this.flex === "wrap" ? "flex" : ""}`
+          : this.baseClass
       ];
 
       if (this.direction) {

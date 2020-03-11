@@ -12,6 +12,7 @@ import NAside from "./components/NAside"
 import NMain from "./components/NMain"
 import NFooter from "./components/NFooter"
 import NTable from "./components/NTable"
+import NSelect from "./components/NSelect"
 
 const components = {
   NButton,
@@ -24,7 +25,8 @@ const components = {
   NAside,
   NMain,
   NFooter,
-  NTable
+  NTable,
+  NSelect
 };
 
 /**

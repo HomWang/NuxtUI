@@ -3,6 +3,7 @@ import NInputTheme from "../plugins/themes/default/NInput";
 
 const {
   baseClass,
+  hoverClass,
   divClass,
   iconClass,
   clearableClass,
@@ -144,6 +145,10 @@ export default {
       type: [String, Object, Array],
       default: baseClass
     },
+    hoverClass: {
+      type: [String, Object, Array],
+      default: hoverClass
+    },
     divClass: {
       type: [String, Object, Array],
       default: divClass
@@ -263,7 +268,8 @@ export default {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
-        this.baseClass
+        this.baseClass,
+        this.hoverClass
       ];
 
       if (this.disabled) {
@@ -421,7 +427,7 @@ export default {
 
       if (this.clearable && this.currentValue) {
         classes.push(this.clearableClass);
-        classes.push("n-icon-clean")
+        classes.push("n-icon-clean");
       }
 
       switch (this.status) {
@@ -460,10 +466,12 @@ export default {
 
     // 清除input的值
     onClearable () {
-      this.$emit("input", "");
-      this.$emit("change", "");
-      this.$emit("clear");
-      this.currentValue = "";
+      if (this.clearable) {
+        this.$emit("input", "");
+        this.$emit("change", "");
+        this.$emit("clear");
+        this.currentValue = "";
+      }
     },
 
     getAttributes () {

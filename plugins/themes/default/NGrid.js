@@ -1,5 +1,5 @@
-const NIcon = {
+const NGrid = {
   baseClass: "grid",
 };
 
-export default NIcon;
+export default NGrid;

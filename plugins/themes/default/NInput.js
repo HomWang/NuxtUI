@@ -1,5 +1,6 @@
 const NInput = {
   baseClass: 'border block rounded outline-none w-full hover:border-gray-400 focus:border-blue-500',
+  hoverClass: '',
   divClass: 'relative',
   iconClass: 'icon iconfont absolute top-0 ',
   clearableClass: 'text-gray-500 hover:text-gray-600 cursor-pointer',
