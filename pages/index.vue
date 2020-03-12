@@ -27,6 +27,12 @@
                 <n-radio label="2" v-model="radio"></n-radio>
                 <n-radio label="3" v-model="radio"></n-radio>
                 <n-radio label="4" v-model="radio"></n-radio>
+                <n-radio-group v-model="test">
+                    <n-radio label="1"></n-radio>
+                    <n-radio label="2"></n-radio>
+                    <n-radio label="3"></n-radio>
+                    <n-radio label="4"></n-radio>
+                </n-radio-group>
             </div>
         </div>
     </div>
@@ -44,6 +50,7 @@
     import NInput from "~/components/NInput";
     import NButton from "~/components/NButton";
     import NRadio from "~/components/NRadio";
+    import NRadioGroup from "~/components/NRadioGroup";
 
     export default {
         components: {
@@ -57,7 +64,8 @@
             // NFooter
             NInput,
             NButton,
-            NRadio
+            NRadio,
+            NRadioGroup
         },
         data() {
             return {
@@ -65,6 +73,7 @@
                 newDisabled: false,
                 newStatus: "", //error warning success
                 radio: '1',
+                test: '1',
             };
         },
         mounted() {

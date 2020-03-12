@@ -32,3 +32,27 @@ html {
     transform: rotate(360deg)
   }
 }
+
+/* radio 样式 */
+.n_radio__inner:after {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: #fff;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: transform .15s ease-in;
+}
+.n_radio__input.is-checked .n_radio__inner {
+    border-color: #409eff !important;
+    background: #409eff !important;
+}
+.n_radio__input.is-checked+.n_radio__label {
+    color: #409eff !important;;
+}
+.n_radio__input.is-checked .n_radio__inner:after {
+    transform: translate(-50%,-50%) scale(1);
+}

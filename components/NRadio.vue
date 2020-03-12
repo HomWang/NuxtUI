@@ -2,8 +2,11 @@
     import NRadioTheme from "../plugins/themes/default/NRadio";
 
     const {
-        baseClass,
-        defaultSizeClass,
+        n_radio,
+        n_radio__input,
+        n_radio__inner,
+        n_radio__original,
+        n_radio__label
     } = NRadioTheme;
 
     export default {
@@ -14,14 +17,6 @@
         },
 
         props: {
-            baseClass: {
-                type: [String, Object, Array],
-                default: baseClass
-            },
-            defaultSizeClass: {
-                type: [String, Object, Array],
-                default: defaultSizeClass
-            },
             isDisabled: {
                 type: Boolean,
                 default : false
@@ -39,37 +34,35 @@
         },
 
         computed: {
-            model: {
-                get() {
-                    return this.value;
-                },
-                set(val) {
-                    // 改变 this.value的值
-                    console.log(val);
-                    this.$emit('input', val);
+            isGroup() {
+                let parent = this.$parent;
+                while (parent) {
+                    if (parent.$options._componentTag !== 'n-radio-group') {
+                        parent = parent.$parent;
+                    } else {
+                        this._radioGroup = parent;
+                        return true;
+                    }
                 }
+                return false;
             },
         },
 
         methods: {
-            onBlur(e) {
-                this.$emit("blur", e);
-            },
+            dispatch(componentTag, eventName, params) {
+                let parent = this.$parent || this.$root;
+                let name = parent.$options._componentTag;
 
-            onFocus(e) {
-                this.$emit("focus", e);
-            },
+                while (parent && (!name || name !== componentTag)) {
+                    parent = parent.$parent;
 
-            onClick(e) {
-                this.$emit("click", e);
-            },
-
-            blur() {
-                this.$el.blur();
-            },
-
-            focus() {
-                this.$el.focus();
+                    if (parent) {
+                        name = parent.$options._componentTag;
+                    }
+                }
+                if (parent) {
+                    parent.$emit.apply(parent, [eventName].concat(params));
+                }
             },
         },
 
@@ -81,6 +74,7 @@
                         role: 'radio',
                     },
                     class: [
+                        n_radio,
                         { 'is-disabled': this.isDisabled },
                         { 'is-bordered': this.border },
                     ],
@@ -89,17 +83,16 @@
                     "span",
                     {
                         class: [
-                            'n-radio__input',
+                            'n_radio__input',
+                            n_radio__input,
+                            {'is-checked': (this.isGroup ? this._radioGroup.value : this.value) === this.label},
                         ],
                     },
                     [createElement(
                         "span",
                         {
-                            class: [
-                                'n-radio__inner',
-                            ],
+                            class: [n_radio__inner,'n_radio__inner'],
                         },
-
                     ),
                     createElement(
                         "input",
@@ -108,17 +101,29 @@
                                 ref: "radio",
                                 value: this.label,
                                 type: 'radio',
-                                checked : this.model === this.label,
                             },
-                            class: [
-                                'n-radio__original',
-                            ],
+                            style : {
+                                zIndex : -1
+                            },
+                            domProps : {
+                                checked : (this.isGroup ? this._radioGroup.value : this.value) === this.label,
+                            },
+                            class: [n_radio__original],
                             on: {
-                                input: (e)=>{
-                                    this.model = e.target.value;
-                                    console.log(e.target.value);
-                                    console.log(this.model);
+                                click: (e)=>{
+                                    // radio click默认事件：使修改的状态生效
+                                    if (this.isGroup) {
+                                        this.dispatch('n-radio-group', 'input', [e.target.value]);
+                                    } else {
+                                        this.$emit('input',e.target.value);
+                                    }
                                 },
+                                change: (e)=>{
+                                    this.$nextTick(() => {
+                                        this.$emit('change', e.target.value);
+                                        this.isGroup && this.dispatch('n-radio-group', 'input', [e.target.value]);
+                                    });
+                                }
                             },
                         },
 
@@ -127,9 +132,7 @@
                 createElement(
                     "span",
                     {
-                        class: [
-                            'n-radio__label',
-                        ],
+                        class: [n_radio__label,'n_radio__label'],
                     },
                     [this.$slots.default ? this.$slots.default : this.label]
                 )],
