@@ -2,15 +2,15 @@
     import NRadioTheme from "../plugins/themes/default/NRadio";
 
     const {
-        n_radio,
-        n_radio__input,
-        n_radio__inner,
-        n_radio__original,
-        n_radio__label
+        nRadioButton,
+        nRadioButtonOriginRadio,
+        nRadioButtonInner,
+        nRadioLeftButton,
+        nRadioRightButton
     } = NRadioTheme;
 
     export default {
-        name: "NRadio",
+        name: "NRadioButton",
 
         install(Vue, theme) {
             selfInstall(Vue, theme, this);
@@ -34,24 +34,43 @@
         },
 
         computed: {
-            isGroup() {
+            radioGroup() {
                 let parent = this.$parent;
                 while (parent) {
                     if (parent.$options._componentTag !== 'n-radio-group') {
                         parent = parent.$parent;
                     } else {
-                        this._radioGroup = parent;
-                        return true;
+                        return parent;
                     }
                 }
                 return false;
             },
             isChecked() {
-                return (this.isGroup ? this._radioGroup.value : this.value) === this.label
-            }
+                return this.radioGroup.value === this.label;
+            },
+        },
+
+        mounted() {
+            this.$nextTick(()=>{
+                this.addBorder();
+            });
         },
 
         methods: {
+            addBorder() {
+                if (!this.$el.previousElementSibling) {
+                    let classArray = nRadioLeftButton.split(' ');
+                    classArray.forEach((item) => {
+                        this.$el.classList.add(item);
+                    })
+                }
+                if (!this.$el.nextElementSibling) {
+                    let classArray = nRadioRightButton.split(' ');
+                    classArray.forEach((item) => {
+                        this.$el.classList.add(item);
+                    })
+                }
+            },
             dispatch(componentTag, eventName, params) {
                 let parent = this.$parent || this.$root;
                 let name = parent.$options._componentTag;
@@ -77,29 +96,12 @@
                         role: 'radio',
                     },
                     class: [
-                        n_radio,
+                        nRadioButton,
                         { 'is-disabled': this.isDisabled },
                         { 'is-bordered': this.border },
                     ],
                 },
-                [createElement(
-                    "span",
-                    {
-                        class: [
-                            'n_radio__input',
-                            n_radio__input,
-                            {'is-checked': this.isChecked},
-                        ],
-                    },
-                    [createElement(
-                        "span",
-                        {
-                            class: [
-                                n_radio__inner,
-                                'n_radio__inner'
-                            ],
-                        },
-                    ),
+                [
                     createElement(
                         "input",
                         {
@@ -114,39 +116,34 @@
                             domProps : {
                                 checked : this.isChecked,
                             },
-                            class: [n_radio__original],
+                            class: [
+                                nRadioButtonOriginRadio,
+                                'n_radio_button__orig_radio'
+                            ],
                             on: {
                                 click: (e)=>{
                                     // radio click默认事件：使修改的状态生效
-                                    if (this.isGroup) {
-                                        this.dispatch('n-radio-group', 'input', e.target.value);
-                                    } else {
-                                        this.$emit('input',e.target.value);
-                                    }
+                                    this.dispatch('n-radio-group', 'input', e.target.value);
                                 },
                                 change: (e)=>{
                                     this.$nextTick(() => {
-                                        this.$emit('change', e.target.value);
-                                        this.isGroup && this.dispatch('n-radio-group', 'handleChange', e.target.value);
+                                        this.dispatch('n-radio-group', 'handleChange', e.target.value);
                                     });
                                 }
-                            },
+                            }
                         },
-
-                    )]
-                ),
-                createElement(
-                    "span",
-                    {
-                        class: [
-                            n_radio__label,
-                            'n_radio__label',
-                        ],
-                    },
-                    [this.$slots.default ? this.$slots.default : this.label]
-                )],
+                    ),
+                    createElement(
+                        "span",
+                        {
+                            class: [
+                                nRadioButtonInner,
+                                'n_radio_button__inner'],
+                        },
+                        [this.$slots.default ? this.$slots.default : this.label]
+                    )
+                ],
             )
         }
-
     }
 </script>

@@ -28,10 +28,10 @@
                 <n-radio label="3" v-model="radio"></n-radio>
                 <n-radio label="4" v-model="radio"></n-radio>
                 <n-radio-group v-model="test">
-                    <n-radio label="1"></n-radio>
-                    <n-radio label="2"></n-radio>
-                    <n-radio label="3"></n-radio>
-                    <n-radio label="4"></n-radio>
+                    <n-radio-button label="1"></n-radio-button>
+                    <n-radio-button label="2"></n-radio-button>
+                    <n-radio-button label="3"></n-radio-button>
+                    <n-radio-button label="4"></n-radio-button>
                 </n-radio-group>
             </div>
         </div>
@@ -51,9 +51,11 @@
     import NButton from "~/components/NButton";
     import NRadio from "~/components/NRadio";
     import NRadioGroup from "~/components/NRadioGroup";
+    import NRadioButton from "../components/NRadioButton";
 
     export default {
         components: {
+            NRadioButton,
             // NCheckbox
             // NGrid
             NFlex,

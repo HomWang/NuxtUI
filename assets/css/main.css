@@ -55,3 +55,10 @@ html {
 .n_radio__input.is-checked .n_radio__inner:after {
     transform: translate(-50%,-50%) scale(1);
 }
+
+.n_radio_button__orig_radio:checked+.n_radio_button__inner {
+    color: #fff !important;
+    background-color: #409eff !important;
+    border-color: #409eff !important;
+}
+/* radio 样式 */
