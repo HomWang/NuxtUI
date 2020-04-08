@@ -5,14 +5,16 @@ import NButton from "./components/NButton";
 import NIcon from "./components/NIcon";
 import NGrid from "./components/NGrid";
 import NFlex from "./components/NFlex";
-import NInput from "./components/NInput"
-import NContainer from "./components/NContainer"
-import NHeader from "./components/NHeader"
-import NAside from "./components/NAside"
-import NMain from "./components/NMain"
-import NFooter from "./components/NFooter"
-import NTable from "./components/NTable"
-import NSelect from "./components/NSelect"
+import NInput from "./components/NInput";
+import NContainer from "./components/NContainer";
+import NHeader from "./components/NHeader";
+import NAside from "./components/NAside";
+import NMain from "./components/NMain";
+import NFooter from "./components/NFooter";
+import NTable from "./components/NTable";
+import NSelect from "./components/NSelect";
+// import NFlvPlayer from "./components/NFlvPlayer";
+import NToast from "./components/NToast";
 
 const components = {
   NButton,
@@ -26,7 +28,9 @@ const components = {
   NMain,
   NFooter,
   NTable,
-  NSelect
+  NSelect,
+  // NFlvPlayer,
+  NToast
 };
 
 /**
@@ -58,6 +62,8 @@ function extendComponent(Vue, CurrentTheme, componentName) {
   });
 }
 
+let currentToast;
+
 export default {
   install(Vue, args = {}) {
     if (this.installed) {
@@ -79,5 +85,36 @@ export default {
         extendComponent(Vue, CurrentTheme, componentName)
       );
     });
+
+    Vue.prototype.$toast = function (message, toastOptions) {
+      if (currentToast) {
+        currentToast.close();
+      }
+      currentToast = createToast({
+        Vue,
+        message,
+        propsData: toastOptions,
+        onClose: () => {
+          currentToast = null;
+        }
+      });
+    };
   }
 };
+
+function createToast({
+  Vue,
+  message,
+  propsData,
+  onClose
+}) {
+  let Constructor = Vue.extend(NToast);
+  let toast = new Constructor({
+    propsData
+  });
+  toast.$slots.default = [message];
+  toast.$mount();
+  toast.$on("close", onClose);
+  document.body.appendChild(toast.$el);
+  return toast;
+}

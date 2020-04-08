@@ -32,3 +32,113 @@ html {
     transform: rotate(360deg)
   }
 }
+
+/* 过渡效果 */
+.transition-height {
+  transition: height 300ms !important;
+}
+
+/* rgba背景色 */
+.bg-black-rgba-700 {
+  background-color: rgba(0, 0, 0, .7);
+}
+
+/* N-Toast 样式 */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.n-toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 300ms;
+}
+
+.n-toast.position-top {
+  top: 0;
+}
+
+.n-toast.position-top .toast {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  animation: slide-down 300ms;
+}
+
+.n-toast.position-bottom {
+  bottom: 0;
+}
+
+.n-toast.position-bottom .toast {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  animation: slide-up 300ms;
+}
+
+.n-toast.position-middle {
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.n-toast.position-middle .toast {
+  animation: fade-in 300ms;
+}
+
+.toast {
+  font-size: 14px;
+  min-height: 40px;
+  line-height: 1.8;
+  display: flex;
+  color: white;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  padding: 0 16px;
+}
+
+.toast .message {
+  padding: 8px 0;
+}
+
+.toast .close {
+  padding-left: 16px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toast .line {
+  height: 100%;
+  border-left: 1px solid #666;
+  margin-left: 16px;
+}

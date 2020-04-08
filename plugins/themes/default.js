@@ -27,6 +27,8 @@ import NMain from "./default/NMain"
 import NFooter from "./default/NFooter"
 import NTable from './default/NTable'
 import NSelect from './default/NSelect'
+// import NFlvPlayer from './default/NFlvPlayer'
+import NToast from './default/NToast'
 
 const DefaultTheme = {
   NButton,
@@ -40,7 +42,9 @@ const DefaultTheme = {
   NHeader,
   NAside,
   NMain,
-  NFooter
+  NFooter,
+  // NFlvPlayer,
+  NToast
 }
 
 export {
@@ -55,7 +59,9 @@ export {
   NHeader,
   NAside,
   NMain,
-  NFooter
+  NFooter,
+  // NFlvPlayer,
+  NToast
 }
 
 export default DefaultTheme

@@ -14,7 +14,8 @@ const {
   xl3SizeClass,
   xl4SizeClass,
   xl5SizeClass,
-  xl6SizeClass
+  xl6SizeClass,
+  hoverClass
 } = NIconTheme;
 
 export default {
@@ -31,17 +32,28 @@ export default {
       validator: function (value) {
         return (
           value === null ||
-          ["xs", "sm", "base", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl"].indexOf(value) !== -1
+          [
+            "xs",
+            "sm",
+            "base",
+            "lg",
+            "xl",
+            "2xl",
+            "3xl",
+            "4xl",
+            "5xl",
+            "6xl"
+          ].indexOf(value) !== -1
         );
       }
     },
     loading: {
       type: Boolean,
-      default: false,
+      default: false
     },
     loadingClass: {
       type: [String, Object, Array],
-      default: loadingClass,
+      default: loadingClass
     },
     baseClass: {
       type: [String, Object, Array],
@@ -90,6 +102,14 @@ export default {
     xl6SizeClass: {
       type: [String, Object, Array],
       default: xl6SizeClass
+    },
+    isHover: {
+      type: Boolean,
+      default: false
+    },
+    hoverClass: {
+      type: [String, Object, Array],
+      default: hoverClass
     }
   },
 
@@ -108,6 +128,10 @@ export default {
 
       if (this.loading) {
         classes.push(this.loadingClass);
+      }
+
+      if (this.$parent.$data.focusState) {
+        classes.push(this.hoverClass);
       }
 
       switch (this.size) {
@@ -149,7 +173,7 @@ export default {
           break;
       }
 
-      return classes
+      return classes;
     }
   },
   methods: {
@@ -171,18 +195,17 @@ export default {
 
     focus () {
       this.$el.focus();
-    },
+    }
   },
 
   render: function (createElement) {
     return createElement(
       "i",
       {
-        class: this.currentClass,
+        class: this.currentClass
       },
       this.$slots.default
-    )
+    );
   }
-
-}
+};
 </script>

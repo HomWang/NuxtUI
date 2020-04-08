@@ -13,13 +13,13 @@ export default {
   name: "NSelect",
   components: { Ninput },
 
-  install (Vue, theme) {
+  install(Vue, theme) {
     selfInstall(Vue, theme, this);
   },
 
   props: {
     data: {
-      type: [String, Object, Array],
+      type: Array,
       default: null
     },
     baseClass: {
@@ -50,7 +50,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       currentValue: "",
       focusState: false,
@@ -61,8 +61,8 @@ export default {
   },
 
   watch: {
-    currentValue (val) {
-      this.$refs.selectInput.currentValue = val
+    currentValue(val) {
+      this.$refs.selectInput.currentValue = val;
     }
   },
 
@@ -72,61 +72,68 @@ export default {
      * 选择框的默认类
      * @return {Array}
      */
-    currentClass () {
+    currentClass() {
       let classes = [
         `${this.$options._componentTag}`,
         `${this.$options._componentTag}-size-${this.size || "default"}`,
         this.baseClass
       ];
-      return classes
+      return classes;
     }
   },
 
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
-      document.addEventListener('click', this.outDivClickHandler);
-    })
+      document.addEventListener("click", this.outDivClickHandler);
+    });
   },
 
   methods: {
-
     //监听点击在元素外
-    outDivClickHandler (e) {
+    outDivClickHandler(e) {
       const target = e.target;
       // 组件已挂载且事件触发对象不在div内
-      if (this.$refs.selectDiv && target !== this.menu && !this.$refs.selectDiv.contains(target)) {
-        this.focusState = false
+      if (
+        this.$refs.selectDiv &&
+        target !== this.menu &&
+        !this.$refs.selectDiv.contains(target)
+      ) {
+        this.focusState = false;
       }
     },
 
-    onClick (e) {
+    onClick(e) {
       this.$emit("click", e);
-      this.focusState = !this.focusState
+      this.focusState = !this.focusState;
     },
 
-    onNewClick (e) {
-      e.stopPropagation()
+    onNewClick(e) {
+      e.stopPropagation();
     },
 
-    onClickDropdown (item) {
-      let newLable = this.isFormat ? item[this.format.lable] : item.lable
-      let newValue = this.isFormat ? item[this.format.value] : item.Value
+    onClickDropdown(item) {
+      let newLable = this.isFormat ? item[this.format.lable] : item.lable;
+      let newValue = this.isFormat ? item[this.format.value] : item.Value;
       if (!newLable) {
-        throw new Error(`${!newLable ? `format格式化-lable值类型定义错误: ${newLable}` : ''}`);
+        throw new Error(
+          `${!newLable ? `format格式化-lable值类型定义错误: ${newLable}` : ""}`
+        );
       }
       if (!newValue) {
-        throw new Error(`${!newValue ? `format格式化-value值类型定义错误: ${newValue}` : ''}`);
+        throw new Error(
+          `${!newValue ? `format格式化-value值类型定义错误: ${newValue}` : ""}`
+        );
       }
       if (this.$refs.selectInput.currentValue !== item.lable) {
-        this.isChange = true
+        this.isChange = true;
         this.$emit("change", newValue);
       }
-      this.$refs.selectInput.currentValue = newLable
-      this.currentValue = newLable
-      this.focusState = false
+      this.$refs.selectInput.currentValue = newLable;
+      this.currentValue = newLable;
+      this.focusState = false;
     },
 
-    getDivAttributes () {
+    getDivAttributes() {
       return {
         id: this.id
       };
@@ -137,16 +144,18 @@ export default {
      * 渲染Input组件
      * @return {String}
      */
-    inputToRender (createElement) {
+    inputToRender(createElement) {
       return this.$createElement(Ninput, {
         ref: "selectInput",
         props: {
-          icon: `iconn-icon-dropdown duration-300 ${this.focusState ? this.focusClass : ""}`,
-          hoverClass: 'cursor-pointer',
+          icon: `n-icon-dropdown duration-300 ${
+            this.focusState ? this.focusClass : ""
+          }`,
+          hoverClass: "cursor-pointer",
           readonly: "readonly",
           placeholder: this.placeholder
         }
-      })
+      });
     },
 
     /**
@@ -154,38 +163,40 @@ export default {
      * 根据dropdown渲染的列表组件
      * @return {String}
      */
-    dropdownToRender (createElement) {
+    dropdownToRender(createElement) {
       let newList = [];
-      this.option.map((item) => {
-        newList.push(createElement("div",
-          {
-            attrs: {
-              class: this.dropdownChildClass
-            },
-            on: {
-              click: (e) => {
-                e.stopPropagation()
-                this.onClickDropdown(item)
+      this.option.map(item => {
+        newList.push(
+          createElement(
+            "div",
+            {
+              attrs: {
+                class: this.dropdownChildClass
+              },
+              on: {
+                click: e => {
+                  e.stopPropagation();
+                  this.onClickDropdown(item);
+                }
               }
-            }
-          },
-          this.isFormat ? item[this.format.lable] : item.lable)
+            },
+            this.isFormat ? item[this.format.lable] : item.lable
+          )
         );
-      })
+      });
       return this.$createElement(
         "div",
         {
           ref: "dropdown",
           class: this.dropdownClass,
-          on: {
-          }
+          on: {}
         },
         newList
       );
     }
   },
 
-  render: function (createElement) {
+  render: function(createElement) {
     return createElement(
       "div",
       {
@@ -194,9 +205,12 @@ export default {
         class: this.currentClass,
         on: {
           click: [this.onClick]
-        },
+        }
       },
-      [this.inputToRender(createElement), this.focusState && this.dropdownToRender(createElement)]
+      [
+        this.inputToRender(createElement),
+        this.focusState && this.dropdownToRender(createElement)
+      ]
     );
   }
 };
