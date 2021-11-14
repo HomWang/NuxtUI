@@ -2,6 +2,8 @@
 
 **NuxtUI**是一个由 [TailwindCss CSS](https://tailwindcss.com/docs/installation)开发的`Vue`组件，宗旨是根据您的应用程序的独特设计进行定制。
 
+新的框架，将由影子 Dom 开发... 该 UI 暂不开发新组件
+
 因为使用的是`TailwindCss CSS`，所以默认情况下使用的是它的类名，并且所有类名都是可配置的，从而使您可以完全自定义组件的外观。
 
 完全可以通过只需要配置一次就可以设置主题类了。
