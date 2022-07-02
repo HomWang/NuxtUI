@@ -1,59 +1,32 @@
 {
   "name": "nuxt-ui",
-  "version": "0.2.9",
-  "description": "Nuxt UI components with configurable classes ready for TailwindCSS",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/516310460/NuxtUI"
-  },
-  "keywords": [
-    "tailwindcss",
-    "vue",
-    "nuxt",
-    "nuxt-ui",
-    "vue components",
-    "nuxt components",
-    "tailwind components"
-  ],
-  "author": "HomWang",
+  "version": "0.3.1",
   "license": "MIT",
-  "main": "dist/nuxt-ui.common.js",
-  "style": "dist/nuxt-ui.css",
-  "private": false,
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "build-bundle": "vue-cli-service build --target lib --name nuxt-ui index.js && gulp build --gulpfile gulpfile.js",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "test": "jest"
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
   },
-  "directories": {
-    "doc": "docs"
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "body-scroll-lock": "^2.6.4",
-    "cp-cli": "^2.0.0",
-    "flv.js": "^1.5.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-cssmin": "^0.2.0",
-    "nuxt": "^2.0.0",
-    "vue-popperjs": "^2.1.0",
-    "vue2-datepicker": "^3.3.1"
+    "@nuxt/kit": "^3.0.0-rc.4"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^1.0.0",
-    "@vue/cli-service": "^3.11.0",
-    "@vue/test-utils": "^1.0.0-beta.27",
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
-    "vue-jest": "^4.0.0-0"
-  },
-  "postcss": {
-    "plugins": {
-      "tailwindcss": "./tailwind.config.js",
-      "autoprefixer": {}
-    }
+    "@nuxt/module-builder": "latest",
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "eslint": "latest",
+    "nuxt": "^3.0.0-rc.4"
   }
 }
