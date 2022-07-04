@@ -230,7 +230,7 @@ const radio = ref('a')
       </NCard>
 
       <NBackTop :offsetTop="100">
-        <div class="rounded p-2 bg-blue text-white">UP</div>
+        <div class="rounded p-2 bg-blue-500 active:bg-blue-600 hover:bg-blue-400 text-white shadow">UP</div>
       </NBackTop>
     </div>
   </div>

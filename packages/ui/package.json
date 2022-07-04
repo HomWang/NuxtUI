@@ -1,8 +1,9 @@
 {
-  "name": "@nuxt/ui",
-  "version": "0.1.1",
+  "name": "nuxt-ui",
+  "version": "0.3.1",
   "license": "MIT",
   "type": "module",
+  "private": false,
   "exports": {
     ".": {
       "import": "./dist/nuxt.mjs",

@@ -1,22 +1,23 @@
 # Nuxt UI Components
 
-<a href="https://www.npmjs.com/package/@nuxt/ui-edge"><img src="https://flat.badgen.net/npm/v/@nuxt/ui-edge"></a>
+<a href="https://www.npmjs.com/package/nuxt-ui"><img src="https://flat.badgen.net/npm/v/nuxt-ui"></a>
 
-UI kit for Nuxt 3's examples and internal tooling UI.
+The framework originally came from the UI toolkit for the nuxt 3 example and the internal tool UI.
+Source: https://github.com/nuxt/ui
 
-> Note: This library is heavily working in progress and does not serve as a generic UI library (for now). It is not recommended to use it in production.
+> Note: this library is undergoing a lot of work and will not be used as a general UI library for the time being. It is not recommended to use in production.
 
 🏀 [Online Playground](https://components.ui.nuxtjs.org)
 
 ## Install
 
 ```ts
-// nuxt.config.js
+// nuxt.config.ts or nuxt.config.js
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/ui'
+    'nuxt-ui'
   ]
 })
 ```
@@ -65,7 +66,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/ui'
+    'nuxt-ui'
   ],
   unocss: {
     shortcuts: {
