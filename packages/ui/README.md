@@ -61,11 +61,14 @@ Powered by [UnoCSS](https://github.com/antfu/unocss), you can use Tailwind/Windi
 It's also possible to override the default theme globally, for example:
 
 ```ts
-// nuxt.config.js
+// nuxt.config.ts
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   modules: [
+    // '@unocss/nuxt',
+    // '@vueuse/nuxt',
+    // '@nuxtjs/color-mode',
     'nuxt-ui'
   ],
   unocss: {
@@ -76,6 +79,26 @@ export default defineNuxtConfig({
     }
   }
 })
+```
+and 
+```ts
+// unocss.config.ts
+import type { Preset } from '@unocss/core'
+import type { Theme } from '@unocss/preset-uno'
+
+const NuxtUIPreset: Preset<Theme> = {
+  name: 'nuxt-ui',
+  shortcuts: {
+    // Customize and override
+    'n-button-base': 'bg-blue dark:bg-black',
+  }
+}
+
+export default {
+  presets: [
+    NuxtUIPreset as Preset<Theme>
+  ]
+}
 ```
 
 You can find all the default values and available entries in [src/unocss/index.ts](./src/unocss/index.ts).
