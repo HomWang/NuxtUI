@@ -23,7 +23,7 @@ function callBackTop() {
 }
 
 const backTop = () => {
-  let newClass = `n-backTop-base n-transition transform scale-0 op0 ${y.value > offsetTopVal ? "!op100 !scale-100" : ""}`;
+  let newClass = `n-backTop-base ${y.value > offsetTopVal ? "!op100 !scale-100" : ""}`;
   return (
     <div class={newClass} onClick={callBackTop}>
       {slots.default()}

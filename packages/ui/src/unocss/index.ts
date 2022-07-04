@@ -110,7 +110,7 @@ export const NuxtUIPreset: Preset<Theme> = {
     'n-tip-icon': '-ml-0.2em mr-0.4em text-1.1em',
 
     // backTop
-    'n-backTop-base': 'fixed right-10 bottom-10'
+    'n-backTop-base': 'fixed right-10 bottom-10 n-transition transform scale-0 op0'
   }
 }
 
