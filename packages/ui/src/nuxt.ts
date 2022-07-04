@@ -8,7 +8,7 @@ const rPath = (p: string) => fileURLToPath(new URL(p, import.meta.url).toString(
 export default defineNuxtModule({
   meta: {
     name: 'nuxt-ui',
-    configKey: 'nuxt-ui'
+    configKey: 'nuxtui'
   },
   defaults: {
     preset: rPath('./preset'),

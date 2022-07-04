@@ -54,6 +54,14 @@ Apply it to parent components could make a local theme scope
 </NCard>
 ```
 
+## Icons
+
+[Icon address](https://icon-sets.iconify.design)
+```html
+<!-- carbon:*** -->
+<div class="carbon:checkmark-outline" />
+```
+
 ## Theming
 
 Powered by [UnoCSS](https://github.com/antfu/unocss), you can use Tailwind/Windi CSS utilities to quickly customize the look and feel of components.
