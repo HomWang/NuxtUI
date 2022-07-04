@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "strict": false,
+    "allowJs": true,
+    "jsx": "preserve",
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node",
+      "@unocss/nuxt",
+      "@vueuse/nuxt",
+      "@nuxtjs/color-mode"
+    ]
+  },
+  "exclude": [
+    "./dist/*"
+  ]
+}
