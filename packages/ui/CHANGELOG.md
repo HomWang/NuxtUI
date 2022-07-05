@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/516310460/NuxtUI/compare/nuxt-ui@0.4.1...nuxt-ui@0.4.2) (2022-07-05)
+
+**Note:** Version bump only for package nuxt-ui
+
+
+
+
+
 ## [0.4.1](https://github.com/516310460/NuxtUI/compare/nuxt-ui@0.3.9...nuxt-ui@0.4.1) (2022-07-04)
 
 **Note:** Version bump only for package nuxt-ui

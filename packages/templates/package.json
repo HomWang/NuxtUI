@@ -1,6 +1,6 @@
 {
   "name": "nuxt-ui-templates",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": "516310460/nuxt-ui",
   "license": "CC-BY-ND-4.0",
   "exports": {
@@ -32,7 +32,7 @@
     "jiti": "^1.14.0",
     "knitwork": "^0.1.2",
     "lodash.template": "^4.5.0",
-    "nuxt-ui-assets": "^0.1.1",
+    "nuxt-ui-assets": "^0.1.2",
     "scule": "^0.2.1",
     "upath": "^2.0.1",
     "vite": "^2.9.12",
