@@ -3,7 +3,6 @@
   "version": "0.4.1",
   "license": "MIT",
   "type": "module",
-  "private": false,
   "exports": {
     ".": {
       "import": "./dist/nuxt.mjs",
@@ -50,5 +49,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "3b2a7bcac96c2305f97fbd227a78521857535344"
+  "gitHead": "f456b6c22ec0f38a4f3a067ca73faf5ceafe8a74"
 }
