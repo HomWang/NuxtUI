@@ -1,6 +1,7 @@
 {
   "name": "nuxt-ui",
   "version": "0.4.2",
+  "repository": "516310460/nuxt-ui",
   "license": "MIT",
   "type": "module",
   "exports": {
