@@ -1,4 +1,4 @@
-# Nuxt-UI
+# Nuxt-UI(暂停维护，等待Nuxt3正式版本敲定，升级为TSX+模版混合)
 
 **NuxtUI**是一个由 [TailwindCss CSS](https://tailwindcss.com/docs/installation)开发的`Vue`组件，宗旨是根据您的应用程序的独特设计进行定制。
 
